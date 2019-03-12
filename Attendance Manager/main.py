@@ -1,29 +1,31 @@
 from tkinter import *
 from tkinter.font import Font
+from StudentClass import Student_Class
 
 root = Tk()
 root.title("Attendance Management System")
 root.iconbitmap("cap.ico")
 name = StringVar()
 
-def name_get():
-    nameget = name.get()
-    print(nameget)
-
 def student_role():
 	frame.destroy()
-	frame2 = Frame(width=700, height=500)
-	fontchange = Font(family="Courier", size=12)
-	entry = Label(frame2, text="Enter your Name :-", font=fontchange)
-	entry.place(x=50, y=40)
-	enter_name = Entry(frame2, textvariable=name, width=30)
-	enter_name.place(x=250, y=45)
-	submit_button = Button(frame2, text="Search", padx=10, pady=2, relief=RAISED, fg="BLACK", activebackground="GREEN", activeforeground="WHITE", command=name_get)
-	submit_button.place(x=250, y=100)
-	frame2.pack()
+	student = Student_Class(root)
+	print(student)
+def Student_Search():
+	name = student.get_name()
+	print(student.name_var)
+
+
+
 
 def teacher_role():
 	pass
+
+
+
+
+
+
 
 frame = Frame(root, width=700, height=500)
 fontchange = Font(family="Courier", size=16)
