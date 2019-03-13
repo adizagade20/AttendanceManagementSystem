@@ -1,6 +1,11 @@
 from tkinter import *
 from tkinter.font import Font
-from StudentClass import Student_Class
+from Student_role import *
+
+
+import time
+
+
 root = Tk()
 root.title("Attendance Management System")
 root.iconbitmap("cap.ico")
@@ -11,14 +16,8 @@ def student_role():
 	student = Student_Class(root)
 
 
-
-
-
 def teacher_role():
 	frame.destroy()
-
-
-
 
 
 frame = Frame(root, width=700, height=500)
