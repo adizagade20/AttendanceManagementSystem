@@ -1,19 +1,22 @@
 from tkinter import *
-root = Tk()
+
 class menubar:
     def __init__(self, master):
         self.master = master
-        master.title("Attendance Management System")
         self.main_menu = Menu()
         self.master.config(menu = self.main_menu)
 
-        self.file_menu = Menu(self.main_menu)
+        self.file_menu = Menu(self.main_menu, tearoff = False)
+        self.edit_menu = Menu(self.main_menu, tearoff = False)
         self.main_menu.add_cascade(label = "File", menu = self.file_menu)
-        self.file_menu.add_cascade(label = "Open")
+        self.main_menu.add_cascade(label = "Edit", menu = self.edit_menu)
 
+        self.file_menu.add_command(label = "Open")
+        self.file_menu.add_command(label = "Save")
+        self.file_menu.add_command(label = "Save as")
+        self.file_menu.add_separator()
+        self.file_menu.add_command(label = "Print")
 
-
-
-window = menubar(root)
-root.geometry("700x500+300+100")
-root.mainloop()
+        self.edit_menu.add_command(label = "Copy")
+        self.edit_menu.add_command(label = "Cut")
+        self.edit_menu.add_command(label = "Paste")

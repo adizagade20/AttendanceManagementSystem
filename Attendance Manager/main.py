@@ -1,16 +1,30 @@
 from tkinter import *
 from tkinter.font import Font
 from Student_role import *
-
-
-import time
-
+#from menu import *
 
 root = Tk()
 root.title("Attendance Management System")
 root.iconbitmap("cap.ico")
 
+def menubar(root):
+	main_menu = Menu()
+	root.config(menu = main_menu)
+	file_menu = Menu(main_menu, tearoff=False)
+	edit_menu = Menu(main_menu, tearoff=False)
+	main_menu.add_cascade(label="File", menu=file_menu)
+	main_menu.add_cascade(label="Edit", menu=edit_menu)
 
+	file_menu.add_command(label="Open")
+	file_menu.add_command(label="Save")
+	file_menu.add_command(label="Save as")
+	file_menu.add_separator()
+	file_menu.add_command(label="Print")
+	file_menu.add_command(label="Exit", command = root.quit)
+
+	edit_menu.add_command(label="Copy")
+	edit_menu.add_command(label="Cut")
+	edit_menu.add_command(label="Paste")
 def student_role():
 	frame.destroy()
 	student = Student_Class(root)
@@ -19,7 +33,7 @@ def student_role():
 def teacher_role():
 	frame.destroy()
 
-
+menubar(root)
 frame = Frame(root, width=700, height=500)
 fontchange = Font(family="Courier", size=16)
 label = Label(frame, text="Choose your role", font = fontchange)
