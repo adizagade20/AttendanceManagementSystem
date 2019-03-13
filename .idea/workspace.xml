@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56fcf5e2-630d-4079-819a-0ef829f610cf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Attendance Manager/StudentClass.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Attendance Manager/Student_CLS.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Attendance Manager/Teacher_CLS.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Attendance Manager/StudentClass.py" beforeDir="false" afterPath="$PROJECT_DIR$/Attendance Manager/StudentClass.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Attendance Manager/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Attendance Manager/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Attendance Manager/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Attendance Manager/test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,32 +14,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Attendance Manager/main.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Attendance Manager/StudentClass.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -52,6 +26,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>attenda</find>
+      <find>master</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -62,10 +37,10 @@
       <list>
         <option value="$PROJECT_DIR$/Attendance Manager/student.py" />
         <option value="$PROJECT_DIR$/Attendance Manager/teacher.py" />
-        <option value="$PROJECT_DIR$/Attendance Manager/test.py" />
         <option value="$PROJECT_DIR$/Attendance Manager/Student_CLS.py" />
         <option value="$PROJECT_DIR$/Attendance Manager/Teacher_CLS.py" />
         <option value="$PROJECT_DIR$/Attendance Manager/adi.py" />
+        <option value="$PROJECT_DIR$/Attendance Manager/test.py" />
         <option value="$PROJECT_DIR$/Attendance Manager/main.py" />
         <option value="$PROJECT_DIR$/Attendance Manager/StudentClass.py" />
       </list>
@@ -231,9 +206,9 @@
       <list>
         <item itemvalue="Python.StudentClass" />
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.test" />
         <item itemvalue="Python.adi" />
         <item itemvalue="Python.Student_CLS" />
-        <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
   </component>
@@ -252,11 +227,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1319" height="735" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.20374708" />
-      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49833888" visible="true" weight="0.13270882" />
+      <window_info id="Structure" order="2" sideWeight="0.5016611" side_tool="true" weight="0.13895394" />
       <window_info anchor="bottom" id="Terminal" order="0" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="2" weight="0.3289689" />
@@ -274,35 +248,40 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Attendance Manager/menu.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Attendance Manager/Student_CLS.py" />
     <entry file="file://$PROJECT_DIR$/Attendance Manager/Teacher_CLS.py" />
+    <entry file="file://$PROJECT_DIR$/Attendance Manager/adi.py" />
     <entry file="file://$PROJECT_DIR$/Attendance Manager/test.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Attendance Manager/adi.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="2" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Attendance Manager/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+        <state relative-caret-position="173">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Attendance Manager/menu.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="45" lean-forward="true" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Attendance Manager/StudentClass.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+        <state relative-caret-position="120">
+          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Attendance Manager/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>

@@ -1,27 +1,21 @@
 from tkinter import *
 from tkinter.font import Font
 from StudentClass import Student_Class
-
 root = Tk()
 root.title("Attendance Management System")
 root.iconbitmap("cap.ico")
-name = StringVar()
+
 
 def student_role():
 	frame.destroy()
 	student = Student_Class(root)
-	print(student)
-def Student_Search():
-	name = student.get_name()
-	print(student.name_var)
+
 
 
 
 
 def teacher_role():
-	pass
-
-
+	frame.destroy()
 
 
 
