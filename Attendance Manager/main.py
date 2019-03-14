@@ -1,11 +1,21 @@
 from tkinter import *
 from tkinter.font import Font
 from Student_role import *
+from Teacher_role import *
 #from menu import *
 
 root = Tk()
 root.title("Attendance Management System")
 root.iconbitmap("cap.ico")
+
+def student_role():
+	frame.destroy()
+	student = Student_Class(root)
+
+
+def teacher_role():
+	frame.destroy()
+	teacher = Teacher_Class(root)
 
 def menubar(root):
 	main_menu = Menu()
@@ -25,13 +35,6 @@ def menubar(root):
 	edit_menu.add_command(label="Copy")
 	edit_menu.add_command(label="Cut")
 	edit_menu.add_command(label="Paste")
-def student_role():
-	frame.destroy()
-	student = Student_Class(root)
-
-
-def teacher_role():
-	frame.destroy()
 
 menubar(root)
 frame = Frame(root, width=700, height=500)
