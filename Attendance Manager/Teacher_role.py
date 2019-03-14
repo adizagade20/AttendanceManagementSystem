@@ -7,7 +7,6 @@ class Teacher_Class:
         self.frame1.destroy()
         prnlabel = Label().place()
 
-
     def add_student_patch(self, values):
         mydb = mysql.connector.connect(host="localhost", user="root", passwd="root", database="adi")
         mycursor = mydb.cursor()
