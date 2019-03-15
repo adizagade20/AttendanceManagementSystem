@@ -1,20 +1,30 @@
 from tkinter import *
 from tkinter.font import Font
+from tkinter.ttk import Combobox
 from tkinter.ttk import Separator
 import mysql.connector
 
 root = Tk()
-frame = Frame(root)
-mydb = mysql.connector.connect(host="localhost", user="root", passwd="root", database="adi")
+root.title("Attendance Management System")
+#root.iconbitmap("cap.ico")
+MainFrame = Frame(root, width=1280, height=650)
+StudentFrame = Frame(root, width=1280, height=650)
+DisplayStudentFrame = Frame(root, width=1280, height=650)
+TeacherFrame = Frame(root, width=1280, height=650)
+AddStudentFrame = Frame(root, width=1280, height=650)
+CheckAttendanceFrame = Frame(root, width=1280, height=650)
 
 
-mycursor=mydb.cursor()
-mycursor.execute("SELECT * FROM attendance ORDER by Roll_No ASC")
-result=mycursor.fetchall()
-CheckAttendanceFrame=Frame(root, width=1280, height=650)
 
-def CheckAttendance():
-    frame.destroy()
+
+
+def checkattendance():
+    TeacherFrame.destroy()
+    mydb = mysql.connector.connect(host="localhost", user="root", passwd="root", database="adi")
+    mycursor = mydb.cursor()
+    mycursor.execute("SELECT * FROM attendance ORDER by Roll_No ASC")
+    result = mycursor.fetchall()
+
     print(result)
 
     rn_label = Label(CheckAttendanceFrame, text="Roll No.").grid(row=0, column=0, stick=W)
@@ -47,7 +57,6 @@ def CheckAttendance():
     Separator(CheckAttendanceFrame, orient=VERTICAL).grid(row=0, column=27, sticky='ns')
     osltll_label = Label(CheckAttendanceFrame, text="OSTL", width=7).grid(row=0, column=28, stick=W)
     Separator(CheckAttendanceFrame, orient=VERTICAL).grid(row=0, column=29, sticky='ns')
-
     print(len(result))
     i=0
     j=0
@@ -82,20 +91,9 @@ def CheckAttendance():
         Separator(CheckAttendanceFrame, orient=VERTICAL).grid(row=i+1, column=27, sticky='ns')
         osltll_label = Label(CheckAttendanceFrame, text=result[i][14]).grid(row=i+1, column=28, stick=E)
         Separator(CheckAttendanceFrame, orient=VERTICAL).grid(row=i+1, column=29, sticky='ns')
-
     CheckAttendanceFrame.pack()
 
 
-
-
-
-
-
-
-
-
-
-AddStudentFrame=Frame(root, width=1280, height=650)
 rn=IntVar()
 prn=IntVar()
 name=StringVar()
@@ -112,7 +110,8 @@ coal=IntVar()
 ostl=IntVar()
 ostll=IntVar()
 
-def FetchStudentData():
+
+def fetchstudentdata():
     z=rn.get()
     a= prn.get()
     b=name.get()
@@ -144,7 +143,6 @@ def FetchStudentData():
     values.append(l)
     values.append(m)
     values.append(n)
-
     mysqlvalues=tuple(values)
     mydb = mysql.connector.connect(host="localhost", user="root", passwd="root", database="adi")
     mycursor=mydb.cursor()
@@ -153,8 +151,9 @@ def FetchStudentData():
     mydb.commit()
     print("Student added successfully : ", mysqlvalues)
 
-def AddStudent():
-    frame.destroy()
+
+def addstudent():
+    TeacherFrame.destroy()
     label=Label(AddStudentFrame, text="Enter student details", font=Font(size=12)).grid(row=0, column=0, columnspan=2)
     rn_label=Label(AddStudentFrame, text="Roll No.").grid(row=1, column=0, stick=W)
     prn_label=Label(AddStudentFrame, text="PRN").grid(row=2, column=0, stick=W)
@@ -173,7 +172,6 @@ def AddStudent():
     ostl_label=Label(AddStudentFrame, text="OSTL Theory").grid(row=15, column=0, stick=W)
     osltll_label=Label(AddStudentFrame, text="OSTL").grid(row=16, column=0, stick=W)
 
-    #Separator(AddStudentFrame, orient=VERTICAL).grid(column=2, row=0, rowspan=16, sticky='ns')
     rn_entry=Entry(AddStudentFrame, width=20, textvariable=rn).grid(row=1, column=1)
     prn_entry=Entry(AddStudentFrame, width=20, textvariable=prn).grid(row=2, column=1)
     name_entry=Entry(AddStudentFrame, width=20, textvariable=name).grid(row=3, column=1)
@@ -189,19 +187,114 @@ def AddStudent():
     coal_entry = Entry(AddStudentFrame, width=20, textvariable=coal).grid(row=14, column=1)
     ostl_entry = Entry(AddStudentFrame, width=20, textvariable=ostl).grid(row=15, column=1)
     ostll_entry = Entry(AddStudentFrame, width=20, textvariable=ostll).grid(row=16, column=1)
-
-    Submit_Button=Button(AddStudentFrame, text="Save", font=Font(size=12), padx=10, pady=2, bg="BLUE", fg="WHITE", command=FetchStudentData)
+    Submit_Button=Button(AddStudentFrame, text="Save", font=Font(size=12), padx=10, pady=2, bg="BLUE",
+                         fg="WHITE", command=fetchstudentdata)
     Submit_Button.grid(row=18, column=0, columnspan=2)
     AddStudentFrame.pack()
 
-def Start(root):
-    fontchange = Font(family="Courier", size=12)
-    add = Button(frame, font=fontchange, text="Add Student", relief=RAISED, padx=10, pady=3, bg="YELLOW", fg="RED", bd=2, activebackground="BLUE", activeforeground="WHITE", height=1, command=AddStudent).pack()
-    mark = Button(frame, font=fontchange, text="Mark Attendance", relief=RAISED, padx=10, pady=3, bg="YELLOW",fg="RED", bd=2, activebackground="BLUE", activeforeground="WHITE", height=1,).pack()
-    check = Button(frame, font=fontchange, text="Check attendace of paticular student", relief=RAISED, padx=10,pady=3, bg="YELLOW", fg="RED", bd=2, activebackground="BLUE", activeforeground="WHITE", height=1, command=CheckAttendance).pack()
-    check_class = Button(frame, font=fontchange, text="Mark Attendance of whole class", relief=RAISED, padx=10,pady=3, bg="YELLOW", fg="RED", bd=2, activebackground="BLUE", activeforeground="WHITE", height=1).pack()
-    frame.pack(side=TOP, fill="both", expand=True)
 
-Start(root)
+def teachercall():
+    MainFrame.destroy()
+    fontchange = Font(family="Courier", size=12)
+    addnewstudent = Button(TeacherFrame, font=fontchange, text="Add Student", relief=RAISED, padx=10, pady=3, bg="YELLOW",
+                 fg="RED", bd=2, activebackground="BLUE", activeforeground="WHITE", height=1, command=addstudent).pack()
+    marknewattendace = Button(TeacherFrame, font=fontchange, text="Mark Attendance", relief=RAISED, padx=10, pady=3, bg="YELLOW",
+                  fg="RED", bd=2, activebackground="BLUE", activeforeground="WHITE", height=1,).pack()
+    checkclassattendance = Button(TeacherFrame, font=fontchange, text="Check Attendace", relief=RAISED, padx=10, pady=3,bg="YELLOW",
+                   fg="RED", bd=2, activebackground="BLUE", activeforeground="WHITE", height=1, command=checkattendance).pack()
+    TeacherFrame.pack()
+
+
+
+
+
+def displaystudent(details):
+    rn_label = Label(DisplayStudentFrame, text="Roll No.").grid(row=0, column=0, stick=W)
+    prn_label = Label(DisplayStudentFrame, text="PRN").grid(row=1, column=0, stick=W)
+    name_label = Label(DisplayStudentFrame, text="Name").grid(row=2, column=0, stick=W)
+    m4_label = Label(DisplayStudentFrame, text="AM4").grid(row=3, column=0, stick=W)
+    m4t_label = Label(DisplayStudentFrame, text="AM4 Tutorial").grid(row=4, column=0, stick=W)
+    aoa_label = Label(DisplayStudentFrame, text="AOA").grid(row=5, column=0, stick=W)
+    aoal_label = Label(DisplayStudentFrame, text="AOA Lab").grid(row=6, column=0, stick=W)
+    cg_label = Label(DisplayStudentFrame, text="CG").grid(row=7, column=0, stick=W)
+    cgl_label = Label(DisplayStudentFrame, text="CG LAb").grid(row=8, column=0, stick=W)
+    os_label = Label(DisplayStudentFrame, text="OS").grid(row=9, column=0, stick=W)
+    osl_label = Label(DisplayStudentFrame, text="OS Lab").grid(row=10, column=0, stick=W)
+    coa_label = Label(DisplayStudentFrame, text="COA").grid(row=11, column=0, stick=W)
+    coal_label = Label(DisplayStudentFrame, text="COA Lab").grid(row=12, column=0, stick=W)
+    ostl_label = Label(DisplayStudentFrame, text="OSTL Theory").grid(row=13, column=0, stick=W)
+    osltll_label = Label(DisplayStudentFrame, text="OSTL").grid(row=14, column=0, stick=W)
+    detail=[(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1)]
+    rn_label2 = Label(DisplayStudentFrame, text=detail[0][0]).grid(row=0, column=1, stick=W)
+    prn_label2 = Label(DisplayStudentFrame, text=detail[0][1]).grid(row=1, column=1, stick=W)
+    name_label2 = Label(DisplayStudentFrame, text=detail[0][2]).grid(row=2, column=1, stick=W)
+    m4_label2 = Label(DisplayStudentFrame, text=detail[0][3]).grid(row=3, column=1, stick=W)
+    m4t_label2 = Label(DisplayStudentFrame, text=detail[0][4]).grid(row=4, column=1, stick=W)
+    aoa_label2 = Label(DisplayStudentFrame, text=detail[0][5]).grid(row=5, column=1, stick=W)
+    aoal_label2 = Label(DisplayStudentFrame, text=detail[0][6]).grid(row=6, column=1, stick=W)
+    cg_label2 = Label(DisplayStudentFrame, text=detail[0][7]).grid(row=7, column=1, stick=W)
+    cgl_label2 = Label(DisplayStudentFrame, text=detail[0][8]).grid(row=8, column=1, stick=W)
+    os_label2 = Label(DisplayStudentFrame, text=detail[0][9]).grid(row=9, column=1, stick=W)
+    osl_label2 = Label(DisplayStudentFrame, text=detail[0][10]).grid(row=10, column=1, stick=W)
+    coa_label2 = Label(DisplayStudentFrame, text=detail[0][11]).grid(row=11, column=1, stick=W)
+    coal_label2 = Label(DisplayStudentFrame, text=detail[0][12]).grid(row=12, column=1, stick=W)
+    ostl_label2 = Label(DisplayStudentFrame, text=detail[0][13]).grid(row=13, column=1, stick=W)
+    osltll_label2 = Label(DisplayStudentFrame, text=detail[0][14]).grid(row=14, column=1, stick=W)
+    DisplayStudentFrame.pack()
+
+
+mydb = mysql.connector.connect(host="localhost", user="root", passwd="root", database="adi")
+mycursor = mydb.cursor()
+mycursor.execute("select PRN_Number from attendance")
+prn_numbers = mycursor.fetchall()
+prn_variable = IntVar()
+
+
+def search_details(prn_no):
+    mydb = mysql.connector.connect(host="localhost", user="root", passwd="root", database="adi")
+    mycursor = mydb.cursor()
+    sql = "SELECT * FROM attendance WHERE PRN_Number= '%d'"
+    key = (prn_no)
+    #mycursor.execute(sql, key)
+    #print(mycursor.fetchone())
+    #details = mycursor.fetchone()
+    details=1
+    displaystudent(details)
+
+
+def get_prn():
+    StudentFrame.destroy()
+    prn_no = (prn_variable.get())
+    print(prn_no)
+    search_details(prn_no)
+
+
+def studentcall():
+    MainFrame.destroy()
+    fontchange = Font(family="Courier", size=12)
+    label = Label(StudentFrame, text="Enter your PRN Number :-", font=fontchange)
+    label.place(x=100, y=40)
+    prn_dropdown = Combobox(StudentFrame, values=prn_numbers, textvariable=prn_variable)
+    prn_dropdown.place(x=350, y=40)
+    submit_button = Button(StudentFrame, text="Search", padx=10, pady=2, relief=RAISED, fg="BLACK", activebackground="GREEN", activeforeground="WHITE", command=get_prn)
+    submit_button.place(x=250, y=100)
+    StudentFrame.pack()
+
+
+def start():
+    fontchange = Font(family="Courier", size=16)
+    label = Label(MainFrame, text="Choose your role", font = fontchange)
+    label.place(x=500, y=200)
+    StudentRoleButton = Button(MainFrame, font = fontchange, text = "Student", relief = RAISED, padx=10, pady=3, bg = "YELLOW",fg = "RED", bd = 2, activebackground ="BLUE", activeforeground = "WHITE", height = 1, command=studentcall)
+    TeacherRoleButton = Button(MainFrame, font = fontchange, text = "Teacher", relief = RAISED, padx=10, pady=3, bg = "YELLOW",fg = "RED", bd = 2, activebackground ="BLUE", activeforeground = "WHITE", height = 1, command=teachercall)
+    StudentRoleButton.place(x=400, y=300)
+    TeacherRoleButton.place(x=700, y=300)
+    MainFrame.pack()
+
+
+
+
+
+start()
 root.geometry("1280x650+35+22")
 root.mainloop()
