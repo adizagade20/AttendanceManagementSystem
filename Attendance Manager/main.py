@@ -1,8 +1,7 @@
 from tkinter import *
 from tkinter.font import Font
 from Student_role import *
-from Teacher_role import *
-#from menu import *
+import TeacherClass
 
 root = Tk()
 root.title("Attendance Management System")
@@ -12,10 +11,9 @@ def student_role():
 	frame.destroy()
 	student = Student_Class(root)
 
-
 def teacher_role():
 	frame.destroy()
-	teacher = Teacher_Class(root)
+	TeacherClass.Start(root)
 
 def menubar(root):
 	main_menu = Menu()
@@ -36,7 +34,7 @@ def menubar(root):
 	edit_menu.add_command(label="Cut")
 	edit_menu.add_command(label="Paste")
 
-menubar(root)
+
 frame = Frame(root, width=700, height=500)
 fontchange = Font(family="Courier", size=16)
 label = Label(frame, text="Choose your role", font = fontchange)
@@ -46,6 +44,7 @@ teacher = Button(frame, font = fontchange, text = "Teacher", relief = RAISED, pa
 student.place(x=200, y=200)
 teacher.place(x=400, y=200)
 frame.pack()
+menubar(root)
 
 root.geometry("700x500+300+100")
 root.mainloop()

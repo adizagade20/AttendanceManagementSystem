@@ -24,3 +24,17 @@ details = mycursor.fetchall()
 for i in details:
     print(i)
 """
+""" prn=IntVar()
+    name=StringVar()
+    m4=IntVar()
+    m4t=IntVar()
+    aoa=IntVar()
+    aoal=IntVar()
+    cg=IntVar()
+    cgl=IntVar()
+    os=IntVar()
+    osl=IntVar()
+    coa=IntVar()
+    coal=IntVar()
+    ostl=IntVar()
+    ostll=IntVar()"""
