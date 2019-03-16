@@ -7,12 +7,18 @@ import mysql.connector
 root = Tk()
 root.title("Attendance Management System")
 #root.iconbitmap("cap.ico")
-MainFrame = Frame(root, width=1280, height=650)
-StudentFrame = Frame(root, width=1280, height=650)
-DisplayStudentFrame = Frame(root, width=1280, height=650)
-TeacherFrame = Frame(root, width=1280, height=650)
-AddStudentFrame = Frame(root, width=1280, height=650)
-CheckAttendanceFrame = Frame(root, width=1280, height=650)
+#MainFrame = Frame(root, width=1280, height=650)
+MainFrame = Frame(root)
+#StudentFrame = Frame(root, width=1280, height=650)
+StudentFrame = Frame(root)
+#DisplayStudentFrame = Frame(root, width=1280, height=650)
+DisplayStudentFrame = Frame(root)
+#TeacherFrame = Frame(root, width=1280, height=650)
+TeacherFrame = Frame(root)
+#AddStudentFrame = Frame(root, width=1280, height=650)
+AddStudentFrame = Frame(root)
+#CheckAttendanceFrame = Frame(root, width=1280, height=650)
+CheckAttendanceFrame = Frame(root)
 
 
 
@@ -24,7 +30,6 @@ def checkattendance():
     mycursor = mydb.cursor()
     mycursor.execute("SELECT * FROM attendance ORDER by Roll_No ASC")
     result = mycursor.fetchall()
-
     print(result)
 
     rn_label = Label(CheckAttendanceFrame, text="Roll No.").grid(row=0, column=0, stick=W)
@@ -91,7 +96,7 @@ def checkattendance():
         Separator(CheckAttendanceFrame, orient=VERTICAL).grid(row=i+1, column=27, sticky='ns')
         osltll_label = Label(CheckAttendanceFrame, text=result[i][14]).grid(row=i+1, column=28, stick=E)
         Separator(CheckAttendanceFrame, orient=VERTICAL).grid(row=i+1, column=29, sticky='ns')
-    CheckAttendanceFrame.pack()
+    CheckAttendanceFrame.pack(side=TOP, fill="both", expand=True)
 
 
 rn=IntVar()
@@ -190,7 +195,7 @@ def addstudent():
     Submit_Button=Button(AddStudentFrame, text="Save", font=Font(size=12), padx=10, pady=2, bg="BLUE",
                          fg="WHITE", command=fetchstudentdata)
     Submit_Button.grid(row=18, column=0, columnspan=2)
-    AddStudentFrame.pack()
+    AddStudentFrame.pack(side=TOP, fill="both", expand=True)
 
 
 def teachercall():
@@ -202,7 +207,7 @@ def teachercall():
                   fg="RED", bd=2, activebackground="BLUE", activeforeground="WHITE", height=1,).pack()
     checkclassattendance = Button(TeacherFrame, font=fontchange, text="Check Attendace", relief=RAISED, padx=10, pady=3,bg="YELLOW",
                    fg="RED", bd=2, activebackground="BLUE", activeforeground="WHITE", height=1, command=checkattendance).pack()
-    TeacherFrame.pack()
+    TeacherFrame.pack(side=TOP, fill="both", expand=True)
 
 
 
@@ -240,7 +245,7 @@ def displaystudent(details):
     coal_label2 = Label(DisplayStudentFrame, text=detail[0][12]).grid(row=12, column=1, stick=W)
     ostl_label2 = Label(DisplayStudentFrame, text=detail[0][13]).grid(row=13, column=1, stick=W)
     osltll_label2 = Label(DisplayStudentFrame, text=detail[0][14]).grid(row=14, column=1, stick=W)
-    DisplayStudentFrame.pack()
+    DisplayStudentFrame.pack(side=TOP, fill="both", expand=True)
 
 
 mydb = mysql.connector.connect(host="localhost", user="root", passwd="root", database="adi")
@@ -263,7 +268,7 @@ def search_details(prn_no):
 
 
 def get_prn():
-    StudentFrame.destroy()
+    #StudentFrame.destroy()
     prn_no = (prn_variable.get())
     print(prn_no)
     search_details(prn_no)
@@ -273,12 +278,12 @@ def studentcall():
     MainFrame.destroy()
     fontchange = Font(family="Courier", size=12)
     label = Label(StudentFrame, text="Enter your PRN Number :-", font=fontchange)
-    label.place(x=100, y=40)
+    label.place(x=200, y=50)
     prn_dropdown = Combobox(StudentFrame, values=prn_numbers, textvariable=prn_variable)
-    prn_dropdown.place(x=350, y=40)
+    prn_dropdown.place(x=450, y=50)
     submit_button = Button(StudentFrame, text="Search", padx=10, pady=2, relief=RAISED, fg="BLACK", activebackground="GREEN", activeforeground="WHITE", command=get_prn)
-    submit_button.place(x=250, y=100)
-    StudentFrame.pack()
+    submit_button.place(x=350, y=100)
+    StudentFrame.pack(side=TOP, fill="both", expand=True)
 
 
 def start():
@@ -289,12 +294,12 @@ def start():
     TeacherRoleButton = Button(MainFrame, font = fontchange, text = "Teacher", relief = RAISED, padx=10, pady=3, bg = "YELLOW",fg = "RED", bd = 2, activebackground ="BLUE", activeforeground = "WHITE", height = 1, command=teachercall)
     StudentRoleButton.place(x=400, y=300)
     TeacherRoleButton.place(x=700, y=300)
-    MainFrame.pack()
+    MainFrame.pack(side=TOP, fill="both", expand=True)
 
 
 
 
 
 start()
-root.geometry("1280x650+35+22")
+root.geometry("960x600+35+22")
 root.mainloop()
