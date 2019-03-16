@@ -38,3 +38,35 @@ for i in details:
     coal=IntVar()
     ostl=IntVar()
     ostll=IntVar()"""
+"""
+import tkinter as tk
+def on_configure(event):
+    canvas.configure(scrollregion=canvas.bbox('all'))
+root = tk.Tk()
+canvas = tk.Canvas(root)
+canvas.pack(side=tk.LEFT)
+scrollbar = tk.Scrollbar(root, command=canvas.yview)
+scrollbar.pack(side=tk.LEFT, fill='y')
+canvas.configure(yscrollcommand = scrollbar.set)
+canvas.bind('<Configure>', on_configure)
+frame = tk.Frame(canvas)
+canvas.create_window((0,0), window=frame, anchor='nw')
+l = tk.Label(frame, text="Hello", font="-size 50")
+l.pack()
+l = tk.Label(frame, text="World", font="-size 50")
+l.pack()
+l = tk.Label(frame, text="Test text 1\nTest text 2\nTest text 3\nTest text 4\nTest text 5\nTest text 6\nTest text 7\nTest text 8\nTest text 9", font="-size 20")
+l.pack()
+root.mainloop()
+"""
+"""
+from tkinter import *
+top = Tk()
+CheckVar1 = IntVar()
+CheckVar2 = IntVar()
+C1 = Checkbutton(top, text = "Music", variable = CheckVar1, onvalue = 1, offvalue = 0, height=5, width = 20, cursor=arrow)
+C2 = Checkbutton(top, text = "Video", variable = CheckVar2, onvalue = 1, offvalue = 0, height=5, width = 20)
+C1.pack()
+C2.pack()
+top.mainloop()
+"""
