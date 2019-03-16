@@ -7,22 +7,13 @@ import mysql.connector
 root = Tk()
 root.title("Attendance Management System")
 #root.iconbitmap("cap.ico")
-#MainFrame = Frame(root, width=1280, height=650)
+
 MainFrame = Frame(root)
-#StudentFrame = Frame(root, width=1280, height=650)
 StudentFrame = Frame(root)
-#DisplayStudentFrame = Frame(root, width=1280, height=650)
 DisplayStudentFrame = Frame(root)
-#TeacherFrame = Frame(root, width=1280, height=650)
 TeacherFrame = Frame(root)
-#AddStudentFrame = Frame(root, width=1280, height=650)
 AddStudentFrame = Frame(root)
-#CheckAttendanceFrame = Frame(root, width=1280, height=650)
 CheckAttendanceFrame = Frame(root)
-
-
-
-
 
 def checkattendance():
     TeacherFrame.destroy()
@@ -31,7 +22,6 @@ def checkattendance():
     mycursor.execute("SELECT * FROM attendance ORDER by Roll_No ASC")
     result = mycursor.fetchall()
     print(result)
-
     rn_label = Label(CheckAttendanceFrame, text="Roll No.").grid(row=0, column=0, stick=W)
     Separator(CheckAttendanceFrame, orient=VERTICAL).grid(row=0, column=1, sticky='ns')
     prn_label = Label(CheckAttendanceFrame, text="PRN", width=10).grid(row=0, column=2, stick=W)
@@ -63,8 +53,7 @@ def checkattendance():
     osltll_label = Label(CheckAttendanceFrame, text="OSTL", width=7).grid(row=0, column=28, stick=W)
     Separator(CheckAttendanceFrame, orient=VERTICAL).grid(row=0, column=29, sticky='ns')
     print(len(result))
-    i=0
-    j=0
+
     for i in range(len(result)):
         rn_label = Label(CheckAttendanceFrame, text=result[i][0]).grid(row=i+1, column=0, stick=E)
         Separator(CheckAttendanceFrame, orient=VERTICAL).grid(row=i+1, column=1, sticky='ns')
@@ -97,6 +86,13 @@ def checkattendance():
         osltll_label = Label(CheckAttendanceFrame, text=result[i][14]).grid(row=i+1, column=28, stick=E)
         Separator(CheckAttendanceFrame, orient=VERTICAL).grid(row=i+1, column=29, sticky='ns')
     CheckAttendanceFrame.pack(side=TOP, fill="both", expand=True)
+
+
+
+
+
+
+
 
 
 rn=IntVar()
@@ -201,51 +197,64 @@ def addstudent():
 def teachercall():
     MainFrame.destroy()
     fontchange = Font(family="Courier", size=12)
-    addnewstudent = Button(TeacherFrame, font=fontchange, text="Add Student", relief=RAISED, padx=10, pady=3, bg="YELLOW",
-                 fg="RED", bd=2, activebackground="BLUE", activeforeground="WHITE", height=1, command=addstudent).pack()
-    marknewattendace = Button(TeacherFrame, font=fontchange, text="Mark Attendance", relief=RAISED, padx=10, pady=3, bg="YELLOW",
-                  fg="RED", bd=2, activebackground="BLUE", activeforeground="WHITE", height=1,).pack()
-    checkclassattendance = Button(TeacherFrame, font=fontchange, text="Check Attendace", relief=RAISED, padx=10, pady=3,bg="YELLOW",
-                   fg="RED", bd=2, activebackground="BLUE", activeforeground="WHITE", height=1, command=checkattendance).pack()
+    addnewstudent = Button(TeacherFrame, font=fontchange, text="Add Student", relief=RAISED,
+                           padx=10, pady=3, bg="YELLOW", fg="RED", bd=2, activebackground="BLUE",
+                           activeforeground="WHITE", height=1, command=addstudent).pack()
+    marknewattendace = Button(TeacherFrame, font=fontchange, text="Mark Attendance", relief=RAISED,
+                              padx=10, pady=3, bg="YELLOW", fg="RED", bd=2, activebackground="BLUE",
+                              activeforeground="WHITE", height=1,).pack()
+    checkclassattendance = Button(TeacherFrame, font=fontchange, text="Check Attendace", relief=RAISED,
+                                  padx=10, pady=3,bg="YELLOW", fg="RED", bd=2, activebackground="BLUE",
+                                  activeforeground="WHITE", height=1, command=checkattendance).pack()
     TeacherFrame.pack(side=TOP, fill="both", expand=True)
 
 
 
 
 
-def displaystudent(details):
-    rn_label = Label(DisplayStudentFrame, text="Roll No.").grid(row=0, column=0, stick=W)
-    prn_label = Label(DisplayStudentFrame, text="PRN").grid(row=1, column=0, stick=W)
-    name_label = Label(DisplayStudentFrame, text="Name").grid(row=2, column=0, stick=W)
-    m4_label = Label(DisplayStudentFrame, text="AM4").grid(row=3, column=0, stick=W)
-    m4t_label = Label(DisplayStudentFrame, text="AM4 Tutorial").grid(row=4, column=0, stick=W)
-    aoa_label = Label(DisplayStudentFrame, text="AOA").grid(row=5, column=0, stick=W)
-    aoal_label = Label(DisplayStudentFrame, text="AOA Lab").grid(row=6, column=0, stick=W)
-    cg_label = Label(DisplayStudentFrame, text="CG").grid(row=7, column=0, stick=W)
-    cgl_label = Label(DisplayStudentFrame, text="CG LAb").grid(row=8, column=0, stick=W)
-    os_label = Label(DisplayStudentFrame, text="OS").grid(row=9, column=0, stick=W)
-    osl_label = Label(DisplayStudentFrame, text="OS Lab").grid(row=10, column=0, stick=W)
-    coa_label = Label(DisplayStudentFrame, text="COA").grid(row=11, column=0, stick=W)
-    coal_label = Label(DisplayStudentFrame, text="COA Lab").grid(row=12, column=0, stick=W)
-    ostl_label = Label(DisplayStudentFrame, text="OSTL Theory").grid(row=13, column=0, stick=W)
-    osltll_label = Label(DisplayStudentFrame, text="OSTL").grid(row=14, column=0, stick=W)
+def displaystudent(detail):
+    rn_label = Label(DisplayStudentFrame, text="Roll No.").grid(row=6, column=6, stick=W)
+    prn_label = Label(DisplayStudentFrame, text="PRN").grid(row=7, column=6, stick=W)
+    name_label = Label(DisplayStudentFrame, text="Name").grid(row=8, column=6, stick=W)
+    m4_label = Label(DisplayStudentFrame, text="AM4").grid(row=9, column=6, stick=W)
+    m4t_label = Label(DisplayStudentFrame, text="AM4 Tutorial").grid(row=10, column=6, stick=W)
+    aoa_label = Label(DisplayStudentFrame, text="AOA").grid(row=11, column=6, stick=W)
+    aoal_label = Label(DisplayStudentFrame, text="AOA Lab").grid(row=12, column=6, stick=W)
+    cg_label = Label(DisplayStudentFrame, text="CG").grid(row=13, column=6, stick=W)
+    cgl_label = Label(DisplayStudentFrame, text="CG LAb").grid(row=14, column=6, stick=W)
+    os_label = Label(DisplayStudentFrame, text="OS").grid(row=15, column=6, stick=W)
+    osl_label = Label(DisplayStudentFrame, text="OS Lab").grid(row=16, column=6, stick=W)
+    coa_label = Label(DisplayStudentFrame, text="COA").grid(row=17, column=6, stick=W)
+    coal_label = Label(DisplayStudentFrame, text="COA Lab").grid(row=18, column=6, stick=W)
+    ostl_label = Label(DisplayStudentFrame, text="OSTL Theory").grid(row=19, column=6, stick=W)
+    osltll_label = Label(DisplayStudentFrame, text="OSTL").grid(row=20, column=6, stick=W)
+    osltll_label = Label(DisplayStudentFrame, text="Total", width=20).grid(row=21, column=6, stick=W)
     detail=[(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1)]
-    rn_label2 = Label(DisplayStudentFrame, text=detail[0][0]).grid(row=0, column=1, stick=W)
-    prn_label2 = Label(DisplayStudentFrame, text=detail[0][1]).grid(row=1, column=1, stick=W)
-    name_label2 = Label(DisplayStudentFrame, text=detail[0][2]).grid(row=2, column=1, stick=W)
-    m4_label2 = Label(DisplayStudentFrame, text=detail[0][3]).grid(row=3, column=1, stick=W)
-    m4t_label2 = Label(DisplayStudentFrame, text=detail[0][4]).grid(row=4, column=1, stick=W)
-    aoa_label2 = Label(DisplayStudentFrame, text=detail[0][5]).grid(row=5, column=1, stick=W)
-    aoal_label2 = Label(DisplayStudentFrame, text=detail[0][6]).grid(row=6, column=1, stick=W)
-    cg_label2 = Label(DisplayStudentFrame, text=detail[0][7]).grid(row=7, column=1, stick=W)
-    cgl_label2 = Label(DisplayStudentFrame, text=detail[0][8]).grid(row=8, column=1, stick=W)
-    os_label2 = Label(DisplayStudentFrame, text=detail[0][9]).grid(row=9, column=1, stick=W)
-    osl_label2 = Label(DisplayStudentFrame, text=detail[0][10]).grid(row=10, column=1, stick=W)
-    coa_label2 = Label(DisplayStudentFrame, text=detail[0][11]).grid(row=11, column=1, stick=W)
-    coal_label2 = Label(DisplayStudentFrame, text=detail[0][12]).grid(row=12, column=1, stick=W)
-    ostl_label2 = Label(DisplayStudentFrame, text=detail[0][13]).grid(row=13, column=1, stick=W)
-    osltll_label2 = Label(DisplayStudentFrame, text=detail[0][14]).grid(row=14, column=1, stick=W)
-    DisplayStudentFrame.pack(side=TOP, fill="both", expand=True)
+    #Separator(DisplayStudentFrame, orient=HORIZONTAL).grid(row=0, column=0, columnspan=20, sticky='ew')
+    #Separator(DisplayStudentFrame, orient=VERTICAL).grid(row=0, column=0, rowspan=25, sticky='ns')
+    #Separator(DisplayStudentFrame, orient=HORIZONTAL).grid(row=25, column=0, columnspan=20, sticky='ew')
+    #Separator(DisplayStudentFrame, orient=VERTICAL).grid(row=0, column=25, rowspan=25, sticky='ns')
+
+    rn_label2 = Label(DisplayStudentFrame, text=detail[0][0]).grid(row=6, column=12, stick=E)
+    prn_label2 = Label(DisplayStudentFrame, text=detail[0][1]).grid(row=7, column=12, stick=E)
+    name_label2 = Label(DisplayStudentFrame, text=detail[0][2]).grid(row=8, column=12, stick=E)
+    m4_label2 = Label(DisplayStudentFrame, text=detail[0][3]).grid(row=9, column=12, stick=E)
+    m4t_label2 = Label(DisplayStudentFrame, text=detail[0][4]).grid(row=10, column=12, stick=E)
+    aoa_label2 = Label(DisplayStudentFrame, text=detail[0][5]).grid(row=11, column=12, stick=E)
+    aoal_label2 = Label(DisplayStudentFrame, text=detail[0][6]).grid(row=12, column=12, stick=E)
+    cg_label2 = Label(DisplayStudentFrame, text=detail[0][7]).grid(row=13, column=12, stick=E)
+    cgl_label2 = Label(DisplayStudentFrame, text=detail[0][8]).grid(row=14, column=12, stick=E)
+    os_label2 = Label(DisplayStudentFrame, text=detail[0][9]).grid(row=15, column=12, stick=E)
+    osl_label2 = Label(DisplayStudentFrame, text=detail[0][10]).grid(row=16, column=12, stick=E)
+    coa_label2 = Label(DisplayStudentFrame, text=detail[0][11]).grid(row=17, column=12, stick=E)
+    coal_label2 = Label(DisplayStudentFrame, text=detail[0][12]).grid(row=18, column=12, stick=E)
+    ostl_label2 = Label(DisplayStudentFrame, text=detail[0][13]).grid(row=19, column=12, stick=E)
+    osltll_label2 = Label(DisplayStudentFrame, text=detail[0][14]).grid(row=20, column=12, stick=E)
+    total_label2 = Label(DisplayStudentFrame, text=detail[0][3] + detail[0][4] + detail[0][5] + detail[0][6] +
+                                                   detail[0][7] + detail[0][8] + detail[0][9] + detail[0][10] +
+                                                   detail[0][11] + detail[0][12] + detail[0][13] +
+                                                   detail[0][14]).grid(row=21, column=12, stick=E)
+    DisplayStudentFrame.pack(side=TOP, fill="both", expand=True, padx=350)
 
 
 mydb = mysql.connector.connect(host="localhost", user="root", passwd="root", database="adi")
@@ -255,24 +264,15 @@ prn_numbers = mycursor.fetchall()
 prn_variable = IntVar()
 
 
-def search_details(prn_no):
+def search_details():
     mydb = mysql.connector.connect(host="localhost", user="root", passwd="root", database="adi")
     mycursor = mydb.cursor()
-    sql = "SELECT * FROM attendance WHERE PRN_Number= '%d'"
-    key = (prn_no)
-    #mycursor.execute(sql, key)
-    #print(mycursor.fetchone())
-    #details = mycursor.fetchone()
-    details=1
-    displaystudent(details)
-
-
-def get_prn():
-    #StudentFrame.destroy()
-    prn_no = (prn_variable.get())
-    print(prn_no)
-    search_details(prn_no)
-
+    sql = "SELECT * FROM attendance WHERE PRN_Number= %d"
+    #mycursor.execute(sql, ( prn_variable.get() ) )
+    #print(mycursor.fetchall())
+    #detail = mycursor.fetchall()
+    detail=1
+    displaystudent(detail)
 
 def studentcall():
     MainFrame.destroy()
@@ -281,21 +281,39 @@ def studentcall():
     label.place(x=200, y=50)
     prn_dropdown = Combobox(StudentFrame, values=prn_numbers, textvariable=prn_variable)
     prn_dropdown.place(x=450, y=50)
-    submit_button = Button(StudentFrame, text="Search", padx=10, pady=2, relief=RAISED, fg="BLACK", activebackground="GREEN", activeforeground="WHITE", command=get_prn)
-    submit_button.place(x=350, y=100)
+    submit_button = Button(StudentFrame, text="Search", padx=10, pady=2, relief=RAISED, fg="BLACK",
+                           activebackground="GREEN", activeforeground="WHITE", command=search_details)
+    submit_button.place(x=400, y=100)
     StudentFrame.pack(side=TOP, fill="both", expand=True)
 
+def menubar():
+    main_menu = Menu()
+    root.config(menu = main_menu)
+    file_menu = Menu(main_menu, tearoff=False)
+    edit_menu = Menu(main_menu, tearoff=False)
+    main_menu.add_cascade(label="File", menu=file_menu)
+    main_menu.add_cascade(label="Edit", menu=edit_menu)
+    file_menu.add_command(label="Open")
+    file_menu.add_command(label="Save")
+    file_menu.add_command(label="Save as")
+    file_menu.add_separator()
+    file_menu.add_command(label="Print")
+    file_menu.add_command(label="Exit", command = root.quit)
+    edit_menu.add_command(label="Copy")
+    edit_menu.add_command(label="Cut")
+    edit_menu.add_command(label="Paste")
 
 def start():
+    menubar()
     fontchange = Font(family="Courier", size=16)
     label = Label(MainFrame, text="Choose your role", font = fontchange)
-    label.place(x=500, y=200)
+    label.place(relx=0.40, rely=0.25)
+
     StudentRoleButton = Button(MainFrame, font = fontchange, text = "Student", relief = RAISED, padx=10, pady=3, bg = "YELLOW",fg = "RED", bd = 2, activebackground ="BLUE", activeforeground = "WHITE", height = 1, command=studentcall)
     TeacherRoleButton = Button(MainFrame, font = fontchange, text = "Teacher", relief = RAISED, padx=10, pady=3, bg = "YELLOW",fg = "RED", bd = 2, activebackground ="BLUE", activeforeground = "WHITE", height = 1, command=teachercall)
-    StudentRoleButton.place(x=400, y=300)
-    TeacherRoleButton.place(x=700, y=300)
+    StudentRoleButton.place(relx=0.35, rely=0.4)
+    TeacherRoleButton.place(relx=0.55, rely=0.4)
     MainFrame.pack(side=TOP, fill="both", expand=True)
-
 
 
 

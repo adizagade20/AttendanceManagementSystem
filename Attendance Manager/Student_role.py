@@ -4,21 +4,17 @@ from tkinter.font import Font
 import mysql.connector
 class Student_Class:
 
-    def search_details(self, prn):
+    def search_details(self):
         mydb = mysql.connector.connect(host="localhost", user="root", passwd="root", database="adi")
         mycursor = mydb.cursor()
-        sql = "SELECT * FROM attendance WHERE PRN_Number= '%d'"
-        key = (prn,)
-        mycursor.execute(sql, prn)
-        print(mycursor.fetchone())
+        sql = "SELECT * FROM attendance WHERE PRN_Number='%d'"
+        key = (self.prn.get())
+        print(key)
+        mycursor.execute(sql, key)
+        print(mycursor.fetch_row())
         details = mycursor.fetchone()
         print(details)
 
-    def get_prn(self):
-        prn_no=(self.prn.get())
-        print(prn_no)
-        prn_no=int(prn_no)
-        self.search_details(prn_no)
 
     def __init__(self, master):
         self.master = master
@@ -33,7 +29,7 @@ class Student_Class:
         self.prn = IntVar()
         prn_dropdown = Combobox(master, values=prn_numbers, textvariable = self.prn)
         prn_dropdown.place(x=350, y=40)
-        submit_button = Button(master, text = "Search", padx = 10, pady = 2, relief = RAISED, fg = "BLACK", activebackground = "GREEN", activeforeground = "WHITE", command = self.get_prn)
+        submit_button = Button(master, text = "Search", padx = 10, pady = 2, relief = RAISED, fg = "BLACK", activebackground = "GREEN", activeforeground = "WHITE", command = self.search_details)
         submit_button.place(x=250, y=100)
         frame.pack()
 

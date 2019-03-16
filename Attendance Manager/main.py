@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter.font import Font
 from Student_role import *
-import TeacherClass
+#from TeacherClass import *
 
 root = Tk()
 root.title("Attendance Management System")
