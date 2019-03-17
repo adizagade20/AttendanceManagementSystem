@@ -6,7 +6,6 @@ import mysql.connector
 root = Tk()
 
 TeacherFrame=Frame(root)
-canvas=Canvas(root)
 MarkAttendanceFrame = Frame(root)
 canvas=Canvas(root)
 
