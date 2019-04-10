@@ -2,7 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56fcf5e2-630d-4079-819a-0ef829f610cf" name="Default Changelist" comment="16 Mar 2019 02:59 pm">
+      <change beforePath="$PROJECT_DIR$/.idea/Mini_Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Mini_Project.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Amol.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Amol.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Attendance Manager/Dropdown.py" beforeDir="false" afterPath="$PROJECT_DIR$/Attendance Manager/Dropdown.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Attendance Manager/SCRAP.py" beforeDir="false" afterPath="$PROJECT_DIR$/Attendance Manager/SCRAP.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Attendance Manager/Student_role.py" beforeDir="false" afterPath="$PROJECT_DIR$/Attendance Manager/Student_role.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Attendance Manager/TeacherClass.py" beforeDir="false" afterPath="$PROJECT_DIR$/Attendance Manager/TeacherClass.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Attendance Manager/Teacher_role.py" beforeDir="false" afterPath="$PROJECT_DIR$/Attendance Manager/Teacher_role.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Attendance Manager/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Attendance Manager/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Attendance Manager/menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/Attendance Manager/menu.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Attendance Manager/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Attendance Manager/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Final Project/FinalMain.py" beforeDir="false" afterPath="$PROJECT_DIR$/Final Project/FinalMain.py" afterDir="false" />
     </list>
@@ -12,15 +27,59 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="Mini_Project" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Final Project/FinalMain.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Using Classes/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="54" column="32" lean-forward="true" selection-start-line="54" selection-start-column="32" selection-end-line="54" selection-end-column="32" />
+            <state>
+              <caret lean-forward="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Using Classes/studentfile.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="178">
+              <caret line="21" column="59" selection-start-line="21" selection-start-column="50" selection-end-line="21" selection-end-column="59" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Using Classes/teacherfile.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="178">
+              <caret line="266" column="50" selection-start-line="266" selection-start-column="41" selection-end-line="266" selection-end-column="50" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Attendance Manager/SCRAP.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+              <folding>
+                <element signature="e#0#22#0" expanded="true" />
+                <element signature="e#164#1126#1" />
+                <element signature="e#1126#1434#1" />
+                <element signature="e#1435#1737#1" />
+                <element signature="e#1738#1984#1" />
+                <element signature="e#1985#2726#1" />
+                <element signature="e#2727#3076#1" />
+                <element signature="e#3077#3286#0" />
+                <element signature="e#3630#4204#1" />
+                <element signature="e#4205#4936#1" />
+                <element signature="e#4593#4641#0" />
+                <element signature="e#4658#4674#0" />
               </folding>
             </state>
           </provider>
@@ -37,22 +96,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>attenda</find>
-      <find>master</find>
-      <find>wei</find>
-      <find>separato</find>
-      <find>=Frame</find>
-      <find>teacher</find>
-      <find>teacher_role</find>
-      <find>Frame.pack</find>
-      <find>.pack</find>
+      <find>prn</find>
+      <find>table</find>
+      <find>AllColumnNames</find>
+      <find>columnnumber</find>
+      <find>DESCR</find>
+      <find>inset</find>
+      <find>allcol</find>
+      <find>mysql.connector.conn</find>
+      <find>`</find>
       <find>sticky</find>
-      <find>var</find>
-      <find>root</find>
-      <find>mydb = mysql.connector.connect(host=&quot;localhost&quot;, user=&quot;root&quot;, passwd=&quot;root&quot;, database=&quot;adi&quot;)</find>
-      <find>mysql.connector.connect(host=&quot;localhost&quot;, user=&quot;root&quot;, passwd=&quot;root&quot;, database=&quot;adi&quot;)</find>
-      <find>mysql.connector.connect</find>
-      <find>connect</find>
+      <find>BUtton</find>
+      <find>place</find>
+      <find>getprn</find>
+      <find>get</find>
+      <find>commit</find>
+      <find>messagebox</find>
+      <find>combo</find>
+      <find>sepa</find>
+      <find>self.subs</find>
+      <find>self.alldata</find>
+      <find>pass</find>
+      <find>mysql.connector.errors.ProgrammingError:</find>
+      <find>class</find>
+      <find>label</find>
+      <find>l</find>
+      <find>bell</find>
+      <find>UPDATE</find>
+      <find>update</find>
+      <find>add</find>
+      <find>isdeleted</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -78,17 +151,23 @@
         <option value="$PROJECT_DIR$/Attendance Manager/main.py" />
         <option value="$PROJECT_DIR$/Attendance Manager/Student_role.py" />
         <option value="$PROJECT_DIR$/Final Project/just fun.py" />
-        <option value="$PROJECT_DIR$/Attendance Manager/SCRAP.py" />
-        <option value="$PROJECT_DIR$/Attendance Manager/test.py" />
         <option value="$PROJECT_DIR$/Final Project/FinalMain.py" />
+        <option value="$PROJECT_DIR$/Using Classes/start.py" />
+        <option value="$PROJECT_DIR$/Attendance Manager/test.py" />
+        <option value="$PROJECT_DIR$/Using Classes/teacherfile.py" />
+        <option value="$PROJECT_DIR$/Using Classes/main.py" />
+        <option value="$PROJECT_DIR$/Attendance Manager/SCRAP.py" />
+        <option value="$PROJECT_DIR$/Using Classes/studentfile.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-7" />
-    <option name="width" value="1311" />
-    <option name="height" value="735" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-10" />
+    <option name="y" value="-10" />
+    <option name="width" value="1938" />
+    <option name="height" value="1048" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -105,12 +184,7 @@
             <path>
               <item name="Mini_Project" type="b2602c69:ProjectViewProjectNode" />
               <item name="Mini_Project" type="462c0819:PsiDirectoryNode" />
-              <item name="Attendance Manager" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Mini_Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Mini_Project" type="462c0819:PsiDirectoryNode" />
-              <item name="Final Project" type="462c0819:PsiDirectoryNode" />
+              <item name="Using Classes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -120,10 +194,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Python" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Mini_Project-master\Mini_Project\Using Classes" />
       <recent name="G:\Pic\Mini_Project\Attendance Manager" />
     </key>
   </component>
@@ -139,28 +214,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.FinalMain">
-    <configuration name="FinalMain" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Mini_Project" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Final Project" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Final Project/FinalMain.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.SCRAP">
     <configuration name="SCRAP" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Mini_Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -203,27 +257,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="just fun" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Mini_Project" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Final Project" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Final Project/just fun.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Mini_Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -232,11 +265,53 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Attendance Manager" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Using Classes" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Attendance Manager/main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Using Classes/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="studentfile" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Mini_Project" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Using Classes" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Using Classes/studentfile.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="teacherfile" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Mini_Project" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Using Classes" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Using Classes/teacherfile.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -268,11 +343,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.FinalMain" />
-        <item itemvalue="Python.test" />
         <item itemvalue="Python.SCRAP" />
-        <item itemvalue="Python.just fun" />
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.teacherfile" />
+        <item itemvalue="Python.test" />
+        <item itemvalue="Python.studentfile" />
       </list>
     </recent_temporary>
   </component>
@@ -298,20 +373,20 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1311" height="735" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49403343" visible="true" weight="0.18774548" />
-      <window_info id="Structure" order="2" sideWeight="0.5059666" side_tool="true" weight="0.12946428" />
-      <window_info anchor="bottom" id="Terminal" order="0" weight="0.3289689" />
-      <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
+      <window_info id="Favorites" order="0" sideWeight="0.5042194" side_tool="true" weight="0.22207534" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.4957806" visible="true" weight="0.10342262" />
+      <window_info id="Structure" order="2" sideWeight="0.5042194" side_tool="true" weight="0.22207534" />
+      <window_info anchor="bottom" id="Terminal" order="0" weight="0.3286119" />
+      <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" weight="0.3286119" />
       <window_info anchor="bottom" id="Version Control" order="2" weight="0.32890365" />
       <window_info anchor="bottom" id="Python Console" order="3" weight="0.3289689" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" />
-      <window_info anchor="bottom" id="Run" order="6" weight="0.3089701" />
-      <window_info anchor="bottom" id="Debug" order="7" weight="0.39202657" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.30441898" />
+      <window_info anchor="bottom" id="Debug" order="7" weight="0.3895184" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="10" />
@@ -320,17 +395,17 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
     <layout-to-restore>
-      <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49403343" visible="true" weight="0.18824404" />
-      <window_info id="Structure" order="2" sideWeight="0.5059666" side_tool="true" weight="0.12946428" />
-      <window_info anchor="bottom" id="Terminal" order="0" weight="0.3289689" />
-      <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
+      <window_info id="Favorites" order="0" sideWeight="0.5042194" side_tool="true" weight="0.22207534" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.4957806" weight="0.10376735" />
+      <window_info id="Structure" order="2" sideWeight="0.5042194" side_tool="true" weight="0.22207534" />
+      <window_info anchor="bottom" id="Terminal" order="0" weight="0.3286119" />
+      <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" weight="0.3286119" />
       <window_info anchor="bottom" id="Version Control" order="2" weight="0.32890365" />
       <window_info anchor="bottom" id="Python Console" order="3" weight="0.3289689" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" />
-      <window_info anchor="bottom" id="Run" order="6" weight="0.31751227" />
-      <window_info anchor="bottom" id="Debug" order="7" weight="0.3927987" />
+      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.3045326" />
+      <window_info anchor="bottom" id="Debug" order="7" weight="0.3895184" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="10" />
@@ -355,13 +430,13 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Final Project/FinalMain.py</url>
-          <line>32</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -378,67 +453,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Attendance Manager/Teacher_role.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="640">
-          <caret line="32" column="9" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python37/site-packages/mysql/connector/catch23.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="83" selection-start-line="83" selection-end-line="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python37/site-packages/mysql/connector/constants.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="618" selection-start-line="618" selection-end-line="618" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python37/site-packages/mysql/connector/abstracts.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="185" selection-start-line="185" selection-end-line="185" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python37/site-packages/mysql/connector/connection_cext.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="358" selection-start-line="358" selection-end-line="358" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python37/site-packages/mysql/connector/cursor_cext.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="228" selection-start-line="228" selection-end-line="228" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Attendance Manager/menu.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python37/site-packages/mysql/connector/catch23.py" />
+    <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python37/site-packages/mysql/connector/constants.py" />
+    <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python37/site-packages/mysql/connector/abstracts.py" />
+    <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python37/site-packages/mysql/connector/connection_cext.py" />
+    <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python37/site-packages/mysql/connector/cursor_cext.py" />
     <entry file="file://$PROJECT_DIR$/Final Project/Role.py" />
     <entry file="file://$PROJECT_DIR$/Final Project/SearchStudent.py" />
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/traceback.py">
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/traceback.py" />
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/tkinter/__init__.py" />
+    <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python37/site-packages/mysql/connector/__init__.py" />
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/site-packages/mysql/connector/constants.py" />
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/site-packages/mysql/connector/cursor.py" />
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/site-packages/mysql/connector/abstracts.py" />
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/site-packages/mysql/connector/conversion.py" />
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/site-packages/mysql/connector/connection.py" />
+    <entry file="file://$PROJECT_DIR$/Final Project/just fun.py" />
+    <entry file="file://$PROJECT_DIR$/Final Project/cap.ico">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitattributes">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="100" selection-start-line="100" selection-end-line="100" />
+        <state relative-caret-position="42">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Using Classes/start.py" />
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/_bootlocale.py" />
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/codecs.py" />
+    <entry file="file://$PROJECT_DIR$/Attendance Manager/dbdump01.csv" />
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/tkinter/__init__.py" />
     <entry file="file://$PROJECT_DIR$/Attendance Manager/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
@@ -449,20 +494,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Final Project/just fun.py">
+    <entry file="file://$PROJECT_DIR$/Attendance Manager/menu.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="48" column="15" lean-forward="true" selection-end-line="326" selection-end-column="15" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="189">
+          <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Attendance Manager/Student_role.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="34" lean-forward="true" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
+        <state relative-caret-position="126">
+          <caret line="9" column="34" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
@@ -471,8 +513,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Attendance Manager/TeacherClass.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="24" column="21" lean-forward="true" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
+        <state relative-caret-position="504">
+          <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Attendance Manager/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+          <folding>
+            <element signature="e#0#2082#2" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Attendance Manager/Teacher_role.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="672">
+          <caret line="32" column="9" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Final Project/FinalMain.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="613">
+          <caret line="452" column="43" selection-start-line="452" selection-start-column="43" selection-end-line="452" selection-end-column="43" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
@@ -481,50 +553,46 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Attendance Manager/SCRAP.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="61" selection-start-line="61" selection-end-line="61" />
+        <state relative-caret-position="240">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
           <folding>
-            <element signature="e#0#1088#1" />
-            <element signature="e#1089#1397#1" />
-            <element signature="e#1398#1700#1" />
-            <element signature="e#1701#1947#1" />
-            <element signature="e#1948#2689#1" />
-            <element signature="e#2690#3039#1" />
+            <element signature="e#0#22#0" expanded="true" />
+            <element signature="e#164#1126#1" />
+            <element signature="e#1126#1434#1" />
+            <element signature="e#1435#1737#1" />
+            <element signature="e#1738#1984#1" />
+            <element signature="e#1985#2726#1" />
+            <element signature="e#2727#3076#1" />
+            <element signature="e#3077#3286#0" />
+            <element signature="e#3630#4204#1" />
+            <element signature="e#4205#4936#1" />
+            <element signature="e#4593#4641#0" />
+            <element signature="e#4658#4674#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Attendance Manager/test.py">
+    <entry file="file://$PROJECT_DIR$/Using Classes/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="85" column="5" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
+        <state>
+          <caret lean-forward="true" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/tkinter/__init__.py">
+    <entry file="file://$PROJECT_DIR$/Using Classes/teacherfile.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10040">
-          <caret line="505" selection-start-line="505" selection-end-line="505" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python37/site-packages/mysql/connector/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="171" selection-start-line="171" selection-end-line="171" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Final Project/FinalMain.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="54" column="32" lean-forward="true" selection-start-line="54" selection-start-column="32" selection-end-line="54" selection-end-column="32" />
+        <state relative-caret-position="178">
+          <caret line="266" column="50" selection-start-line="266" selection-start-column="41" selection-end-line="266" selection-end-column="50" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Using Classes/studentfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="21" column="59" selection-start-line="21" selection-start-column="50" selection-end-line="21" selection-end-column="59" />
         </state>
       </provider>
     </entry>
