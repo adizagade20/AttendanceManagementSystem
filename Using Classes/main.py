@@ -26,14 +26,15 @@ class StartRoot:
 	def __init__(self, root):
 		self.master = root
 		self.master.title("Attendance Management System")
-		test = Frame(self.master, width=1000, height=30)
-		Button(test, text="Home", bd=5, command=self.gotohome).place(x=930, y=0)
-		test.pack(side=TOP, padx=10, pady=10)
+		self.test = Frame(self.master, width=1000, height=30)
+		Button(self.test, text="Home", bd=5, command=self.gotohome).place(x=930, y=0)
+		self.test.pack(side=TOP, padx=10, pady=10)
 		self.MainFrame = Frame(self.master)
-		root.geometry("1000x600+230+100")
+		root.geometry("1000x600+180+30")
+		self.class1 = StudentRoot(root)
+		self.class2 = TeacherRoot(root)
 		self.first_page()
 		self.menubar()
-
 		try:
 			database = mysql.connector.connect(host="localhost", user="root", passwd="root", database="adi")
 			mycursor = database.cursor()
@@ -57,14 +58,12 @@ class StartRoot:
 
 	def destroymainframe_student(self):
 		self.MainFrame.destroy()
-		s = StudentRoot(self.master)
-		s.studentcall()
+		self.class1.studentcall()
 
 
 	def destroymainframe_teacher(self):
 		self.MainFrame.destroy()
-		t = TeacherRoot(self.master)
-		t.teachercall()
+		self.class2.teachercall()
 
 
 	def menubar(self):
@@ -94,17 +93,33 @@ class StartRoot:
 			columns = ['Roll_No', 'PRN_Number', 'Name', 'AM4', 'AM4_Tutorial', 'AOA', 'AOA_Practical', 'CG', 'CG_Practical', 'OS', 'OS_Practical', 'COA', 'COA_Practical', 'OSTL', 'OSTL_Practical']
 			c.writerow(columns)
 			for x in result:
-				c.writerow(x)
+				if x[len(x)-1]==0:
+					write = x[0:(len(x)-1)]
+					c.writerow(write)
 		except FileNotFoundError:
 			messagebox.showerror("Bad directory", "You may not have choosen any directory or wrong directory", icon="warning")
 
-	def gotohome(self):
-		self.master.destroy()
-		root = Tk()
-		student2 = StartRoot(root)
 
+	def gotohome(self):
+		student.test.destroy()
+		student.MainFrame.destroy()
+		self.class1.destroy1()
+		self.class2.destroy2()
+		try:
+			self.class2.scrollbary.destroy()
+		except:
+			pass
+		
+		try:
+			self.class2.scrollbary.destroy()
+			self.class2.scrollbarx.destroy()
+		except:
+			pass
+		student.__init__(self.master)
+		
 
 student = StartRoot(root)
+
 
 def on_closing():
 	if messagebox.askokcancel("Quit", "Do you want to quit?", icon = "error"):

@@ -52,6 +52,18 @@ class TeacherRoot:
 
 
 	def teachercall(self):
+		self.TeacherFrame.destroy()
+		self.AddStudentFrame.destroy()
+		self.MarkAttendanceFrame.destroy()
+		try:
+			self.MarkAttendanceFrame2.destroy()
+		except:
+			pass
+		self.DeleteStudentFrame.destroy()
+		self.ShowDeletedStudentsFrame.destroy()
+		self.canvas.destroy()
+		self.__init__(self.master)
+
 		fontchange = Font(family="Courier", size=14)
 		Button(self.TeacherFrame, font = fontchange, text = "Add Student", relief = RAISED,
 			   padx = 15, pady = 5, bg = "YELLOW", fg = "RED", bd = 2, activebackground = "BLUE",
@@ -73,6 +85,17 @@ class TeacherRoot:
 
 	def addstudent(self):
 		self.TeacherFrame.destroy()
+		self.AddStudentFrame.destroy()
+		self.MarkAttendanceFrame.destroy()
+		try:
+			self.MarkAttendanceFrame2.destroy()
+		except:
+			pass
+		self.DeleteStudentFrame.destroy()
+		self.ShowDeletedStudentsFrame.destroy()
+		self.canvas.destroy()
+		self.__init__(self.master)
+
 		Label(self.AddStudentFrame, text = "Enter student details", font = Font(size = 12)).grid(row = 1, column = 0, columnspan = 2)
 		subs = ("Roll_No", "PRN_Number", "Name", "AM4", "AM4_Tut", "AOA", "AOA_Lab", "CG", "CG_Lab", "OS", "OS_Lab", "COA", "COA_Lab", "OSTL_Th", "OSTL")
 		Label(self.AddStudentFrame, text = "* mark means it is compulsory", fg = "BLUE").grid(row=0, column=2)
@@ -130,6 +153,17 @@ class TeacherRoot:
 
 	def markattendance(self):
 		self.TeacherFrame.destroy()
+		self.AddStudentFrame.destroy()
+		self.MarkAttendanceFrame.destroy()
+		try:
+			self.MarkAttendanceFrame2.destroy()
+		except:
+			pass
+		self.DeleteStudentFrame.destroy()
+		self.ShowDeletedStudentsFrame.destroy()
+		self.canvas.destroy()
+		self.__init__(self.master)
+		
 		self.mycursor.execute("DESCRIBE attendance")
 		self.AllColumnNames = self.mycursor.fetchall()
 		for i in range(len(self.AllColumnNames)-1):
@@ -148,9 +182,9 @@ class TeacherRoot:
 	def markattendance2(self):
 		self.canvas.pack(side = LEFT, fill = "both", expand = True, padx = 10, pady = 10)
 		self.MarkAttendanceFrame2 = Frame(self.canvas)
-		scrollbary = Scrollbar(self.master, orient = VERTICAL, command = self.canvas.yview)
-		scrollbary.pack(side = RIGHT, fill = Y)
-		self.canvas.configure(yscrollcommand = scrollbary.set)
+		self.scrollbary = Scrollbar(self.master, orient = VERTICAL, command = self.canvas.yview)
+		self.scrollbary.pack(side = RIGHT, fill = Y)
+		self.canvas.configure(yscrollcommand = self.scrollbary.set)
 		self.canvas.bind('<Configure>', self.on_configure)
 		self.canvas.create_window((0, 0), window = self.MarkAttendanceFrame2, anchor = 'nw')
 		for i in range(len(self.alldata)):
@@ -175,10 +209,12 @@ class TeacherRoot:
 		for i in range(len(self.check)):
 			self.attend.append(self.check[i].get())
 		i = 0
+		x = []
 		for i in range(len(self.attend)):
 			if self.attend[i] == 1:
 				subject = self.columnvariable.get()
 				roll = self.alldata[i][0]
+				x.append(self.alldata[i][0])
 				new = self.alldata[i][count] + 1
 				data = []
 				j=0
@@ -194,11 +230,29 @@ class TeacherRoot:
 				sql2 = "INSERT INTO attendance(Roll_No, PRN_Number, Name, Am4, AM4_Tutorial, AOA, AOA_Practical, CG, CG_Practical, OS, OS_Practical, COA, COA_Practical, OSTL, OSTL_Practical, IsDeleted) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 0)"
 				key2 = (data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9], data[10], data[11], data[12], data[13], data[14], )
 				self.mycursor.execute(sql2, key2, )
-		self.database.commit()
-
+		a = messagebox.askyesno("Confirm", ("Attendance for ",x))
+		if(a==True):
+			self.database.commit()
+			self.destroy2()
+		elif(a==False):
+			messagebox.showinfo("Not saved", "Attendance not updated")
+			self.destroy2()
+			
 
 	def checkattendance(self):
 		self.TeacherFrame.destroy()
+		self.AddStudentFrame.destroy()
+		self.MarkAttendanceFrame.destroy()
+		try:
+			self.MarkAttendanceFrame2.destroy()
+		except:
+			pass
+		self.DeleteStudentFrame.destroy()
+		self.ShowDeletedStudentsFrame.destroy()
+		self.canvas.destroy()
+		self.__init__(self.master)
+		
+		self.MarkAttendanceFrame2 = Frame(self.canvas)
 		self.canvas.pack(side = LEFT, fill = "both", expand = True, padx = 10, pady = 10)
 		self.scrollbary = Scrollbar(self.master, orient = VERTICAL, command = self.canvas.yview)
 		self.scrollbary.pack(side = RIGHT, fill = Y)
@@ -244,6 +298,17 @@ class TeacherRoot:
 
 	def deletestudent(self):
 		self.TeacherFrame.destroy()
+		self.AddStudentFrame.destroy()
+		self.MarkAttendanceFrame.destroy()
+		try:
+			self.MarkAttendanceFrame2.destroy()
+		except:
+			pass
+		self.DeleteStudentFrame.destroy()
+		self.ShowDeletedStudentsFrame.destroy()
+		self.canvas.destroy()
+		self.__init__(self.master)
+		
 		self.mycursor.execute("SELECT Roll_No, Name, IsDeleted FROM attendance")
 		self.rollandname2 = self.mycursor.fetchall()
 		self.rollandname = []
@@ -273,6 +338,17 @@ class TeacherRoot:
 
 	def showdeletedstudents(self):
 		self.TeacherFrame.destroy()
+		self.AddStudentFrame.destroy()
+		self.MarkAttendanceFrame.destroy()
+		try:
+			self.MarkAttendanceFrame2.destroy()
+		except:
+			pass
+		self.DeleteStudentFrame.destroy()
+		self.ShowDeletedStudentsFrame.destroy()
+		self.canvas.destroy()
+		self.__init__(self.master)
+		
 		list = []
 		for i in range(len(self.alldata2)):
 			print(self.alldata2[i][len(self.subs)])
@@ -305,3 +381,16 @@ class TeacherRoot:
 			Separator(self.ShowDeletedStudentsFrame, orient=VERTICAL).grid(row=i + 5, column=size[j] + 3, sticky='ns')
 		Separator(self.ShowDeletedStudentsFrame, orient=HORIZONTAL).grid(row=i + 6, column=0, columnspan=50, sticky='ew')
 		self.ShowDeletedStudentsFrame.pack(side=TOP, fill="both", expand=True)
+		
+		
+	def destroy2(self):
+		self.TeacherFrame.destroy()
+		self.AddStudentFrame.destroy()
+		self.MarkAttendanceFrame.destroy()
+		try:
+			self.MarkAttendanceFrame2.destroy()
+		except:
+			pass
+		self.DeleteStudentFrame.destroy()
+		self.ShowDeletedStudentsFrame.destroy()
+		self.canvas.destroy()

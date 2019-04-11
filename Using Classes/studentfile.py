@@ -17,6 +17,9 @@ class StudentRoot:
 
 
 	def studentcall(self):
+		self.StudentFrame.destroy()
+		self.DisplayStudentFrame.destroy()
+		self.__init__(self.master)
 		change_font = Font(family = "Courier", size = 12)
 		label = Label(self.StudentFrame, text="Choose your PRN Number :- ", font = change_font).place(x = 240, y = 30)
 		self.mycursor.execute("select PRN_Number, IsDeleted from attendance")
@@ -40,3 +43,8 @@ class StudentRoot:
 			Label(self.DisplayStudentFrame, text = self.columns[i]).grid(row = i+6, column = 6, stick = W)
 			Label(self.DisplayStudentFrame, text = self.details[0][i]).grid(row = i+6, column = 7, stick = E)
 		self.DisplayStudentFrame.pack(side=TOP, fill="both", expand=True, padx=350)
+		
+		
+	def destroy1(self):
+		self.StudentFrame.destroy()
+		self.DisplayStudentFrame.destroy()

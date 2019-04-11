@@ -1,10 +1,10 @@
 import mysql.connector
+from tkinter import messagebox
 import csv
 import sys
 
 mydb = mysql.connector.connect(host="localhost", user="root", passwd="root", database="adi")
 mycursor = mydb.cursor()
-
 
 
 
