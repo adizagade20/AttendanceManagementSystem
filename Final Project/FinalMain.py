@@ -7,7 +7,7 @@ import mysql.connector
 
 root = Tk()
 root.title("Attendance Management System")
-root.iconbitmap("cap.ico")
+#root.iconbitmap("cap.ico")
 
 try:
 	mydb = mysql.connector.connect(host="localhost", user="root", passwd="root", database="adi")

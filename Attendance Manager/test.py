@@ -1,3 +1,26 @@
+from tkinter import *
+from tkinter.ttk import *
+
+def defocus(event):
+    event.widget.master.focus_set()
+
+root = Tk()
+
+comboBox = Combobox(root, state="readonly", values=("a", "b", "c"))
+comboBox.grid()
+comboBox.set("a")
+comboBox.bind("<FocusIn>", defocus)
+
+mainloop()
+
+
+
+
+
+
+
+
+
 """
 import tkinter as tk  # python 3.x
 # import Tkinter as tk # python 2.x
@@ -53,4 +76,3 @@ if __name__ == "__main__":
     Example(root).pack(fill="both", expand=True)
     root.mainloop()
 """
-

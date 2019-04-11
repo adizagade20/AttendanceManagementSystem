@@ -3,6 +3,8 @@ from tkinter import messagebox
 from tkinter.font import Font
 from tkinter.ttk import Combobox
 from tkinter.ttk import Separator
+from tkinter import filedialog
+import csv
 import mysql.connector
 
 
@@ -65,21 +67,12 @@ class TeacherRoot:
 		self.__init__(self.master)
 
 		fontchange = Font(family="Courier", size=14)
-		Button(self.TeacherFrame, font = fontchange, text = "Add Student", relief = RAISED,
-			   padx = 15, pady = 5, bg = "YELLOW", fg = "RED", bd = 2, activebackground = "BLUE",
-			   activeforeground = "WHITE", height = 1, command = self.addstudent).pack()
-		Button(self.TeacherFrame, font = fontchange, text = "Mark Attendance", relief = RAISED,
-			   padx = 10, pady = 3, bg = "YELLOW", fg = "RED", bd = 2, activebackground = "BLUE",
-			   activeforeground = "WHITE", height = 1, command = self.markattendance).pack()
-		Button(self.TeacherFrame, font = fontchange, text = "Check Attendace", relief = RAISED,
-			   padx = 10, pady = 3, bg = "YELLOW", fg = "RED", bd = 2, activebackground = "BLUE",
-			   activeforeground = "WHITE", height = 1, command = self.checkattendance).pack()
-		Button(self.TeacherFrame, font = fontchange, text = "Delete Student", relief = RAISED,
-			   padx = 10, pady = 3, bg = "YELLOW", fg = "RED", bd = 2, activebackground = "BLUE",
-			   activeforeground = "WHITE", height = 1, command = self.deletestudent).pack()
-		Button(self.TeacherFrame, font=fontchange, text="Show Deleted Student List", relief=RAISED,
-			   padx=10, pady=3, bg="YELLOW", fg="RED", bd=2, activebackground="BLUE",
-			   activeforeground="WHITE", height=1, command=self.showdeletedstudents).pack()
+		Button(self.TeacherFrame, font = fontchange, text = "Add Student", relief = RAISED, padx = 15, pady = 5, bd = 4, activebackground = "BLUE", activeforeground = "WHITE", height = 1, command = self.addstudent).pack()
+		Button(self.TeacherFrame, font = fontchange, text = "Mark Attendance", relief = RAISED, padx = 10, pady = 3, bd = 4, activebackground = "BLUE", activeforeground = "WHITE", height = 1, command = self.markattendance).pack()
+		Button(self.TeacherFrame, font = fontchange, text = "Check Attendace", relief = RAISED, padx = 10, pady = 3, bd = 4, activebackground = "BLUE", activeforeground = "WHITE", height = 1, command = self.checkattendance).pack()
+		Button(self.TeacherFrame, font = fontchange, text = "Delete Student", relief = RAISED, padx = 10, pady = 3, bd = 4, activebackground = "BLUE", activeforeground = "WHITE", height = 1, command = self.deletestudent).pack()
+		Button(self.TeacherFrame, font = fontchange, text="Recycle Bin", relief = RAISED, padx = 10, pady = 3, bd = 4, activebackground="BLUE", activeforeground="WHITE", height=1, command=self.showdeletedstudents).pack()
+		Button(self.TeacherFrame, font = fontchange, text="Export to CSV", relief = RAISED, padx = 10, pady = 3, bd = 4, activebackground="BLUE", activeforeground="WHITE", height=1, command=self.export_to_csv).pack()
 		self.TeacherFrame.pack(side=TOP, fill="both", expand=True)
 
 
@@ -382,7 +375,23 @@ class TeacherRoot:
 		Separator(self.ShowDeletedStudentsFrame, orient=HORIZONTAL).grid(row=i + 6, column=0, columnspan=50, sticky='ew')
 		self.ShowDeletedStudentsFrame.pack(side=TOP, fill="both", expand=True)
 		
-		
+	
+	def export_to_csv(self):
+		self.mycursor.execute("SELECT * FROM attendance")
+		result = self.mycursor.fetchall()
+		location = filedialog.asksaveasfilename(defaultextension = ".csv", filetypes = (("CSV Files", ".csv"), ("All files", "*.*")))
+		try:
+			c = csv.writer(open(location, 'w', newline=""), lineterminator="\n")
+			columns = ['Roll_No', 'PRN_Number', 'Name', 'AM4', 'AM4_Tutorial', 'AOA', 'AOA_Practical', 'CG', 'CG_Practical', 'OS', 'OS_Practical', 'COA', 'COA_Practical', 'OSTL', 'OSTL_Practical']
+			c.writerow(columns)
+			for x in result:
+				if x[len(x)-1]==0:
+					write = x[0:(len(x)-1)]
+					c.writerow(write)
+		except FileNotFoundError:
+			messagebox.showerror("Bad directory", "You may not have choosen any directory or wrong directory", icon="warning")
+
+			
 	def destroy2(self):
 		self.TeacherFrame.destroy()
 		self.AddStudentFrame.destroy()
