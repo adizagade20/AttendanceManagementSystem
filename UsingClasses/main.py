@@ -8,8 +8,6 @@ from teacherfile import TeacherRoot
 root = Tk()
 root.title("Attendance Management System")
 
-#root.iconbitmap("cap.ico")
-
 try:
 	database = mysql.connector.connect(host="localhost", user="root", passwd="root", database="adi")
 	mycursor = database.cursor()
@@ -67,18 +65,7 @@ class StartRoot:
 		self.file_menu = Menu(self.main_menu, tearoff = False)
 		self.edit_menu = Menu(self.main_menu, tearoff = False)
 		self.main_menu.add_cascade(label="File", menu=self.file_menu)
-		self.main_menu.add_cascade(label="Edit", menu=self.edit_menu)
-		#self.file_menu.add_command(label="Open")
-		#self.file_menu.add_command(label="Save")
-		#self.file_menu.add_command(label="Save as")
-		#self.file_menu.add_separator()
-#		self.file_menu.add_command(label="Export to CSV", command = self.export_to_csv)
 		self.file_menu.add_command(label="Exit", command=self.master.quit)
-		self.edit_menu.add_command(label="Copy")
-		self.edit_menu.add_command(label="Cut")
-		self.edit_menu.add_command(label="Paste")
-
-
 
 
 	def gotohome(self):
@@ -97,6 +84,7 @@ class StartRoot:
 		except:
 			pass
 		student.__init__(self.master)
+
 	
 	def escape(self, event):
 		student.test.destroy()

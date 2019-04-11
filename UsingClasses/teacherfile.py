@@ -1,11 +1,14 @@
 from tkinter import *
 from tkinter import messagebox
+from tkinter import simpledialog
 from tkinter.font import Font
 from tkinter.ttk import Combobox
 from tkinter.ttk import Separator
 from tkinter import filedialog
 import csv
 import mysql.connector
+import functools
+import operator
 
 
 
@@ -67,12 +70,12 @@ class TeacherRoot:
 		self.__init__(self.master)
 
 		fontchange = Font(family="Courier", size=14)
-		Button(self.TeacherFrame, font = fontchange, text = "Add Student", relief = RAISED, padx = 15, pady = 5, bd = 4, activebackground = "BLUE", activeforeground = "WHITE", height = 1, command = self.addstudent).pack()
-		Button(self.TeacherFrame, font = fontchange, text = "Mark Attendance", relief = RAISED, padx = 10, pady = 3, bd = 4, activebackground = "BLUE", activeforeground = "WHITE", height = 1, command = self.markattendance).pack()
-		Button(self.TeacherFrame, font = fontchange, text = "Check Attendace", relief = RAISED, padx = 10, pady = 3, bd = 4, activebackground = "BLUE", activeforeground = "WHITE", height = 1, command = self.checkattendance).pack()
-		Button(self.TeacherFrame, font = fontchange, text = "Delete Student", relief = RAISED, padx = 10, pady = 3, bd = 4, activebackground = "BLUE", activeforeground = "WHITE", height = 1, command = self.deletestudent).pack()
-		Button(self.TeacherFrame, font = fontchange, text="Recycle Bin", relief = RAISED, padx = 10, pady = 3, bd = 4, activebackground="BLUE", activeforeground="WHITE", height=1, command=self.showdeletedstudents).pack()
-		Button(self.TeacherFrame, font = fontchange, text="Export to CSV", relief = RAISED, padx = 10, pady = 3, bd = 4, activebackground="BLUE", activeforeground="WHITE", height=1, command=self.export_to_csv).pack()
+		Button(self.TeacherFrame, font = fontchange, text = "Add Student", relief = RAISED, padx = 15, pady = 5, bd = 4, activebackground = "BLUE", activeforeground = "WHITE", height = 1, command = self.addstudent).place(relx = 0.43, rely = 0.10)
+		Button(self.TeacherFrame, font = fontchange, text = "Mark Attendance", relief = RAISED, padx = 10, pady = 3, bd = 4, activebackground = "BLUE", activeforeground = "WHITE", height = 1, command = self.markattendance).place(relx = 0.20, rely = 0.30)
+		Button(self.TeacherFrame, font = fontchange, text = "Check Attendace", relief = RAISED, padx = 10, pady = 3, bd = 4, activebackground = "BLUE", activeforeground = "WHITE", height = 1, command = self.checkattendance).place(relx = 0.60, rely = 0.30)
+		Button(self.TeacherFrame, font = fontchange, text = "Delete Student", relief = RAISED, padx = 10, pady = 3, bd = 4, activebackground = "BLUE", activeforeground = "WHITE", height = 1, command = self.deletestudent).place(relx = 0.20, rely = 0.50)
+		Button(self.TeacherFrame, font = fontchange, text="Recycle Bin", relief = RAISED, padx = 10, pady = 3, bd = 4, activebackground="BLUE", activeforeground="WHITE", height=1, command=self.showdeletedstudents).place(relx = 0.63, rely = 0.50)
+		Button(self.TeacherFrame, font = fontchange, text="Export to CSV", relief = RAISED, padx = 10, pady = 3, bd = 4, activebackground="BLUE", activeforeground="WHITE", height=1, command=self.export_to_csv).place(relx = 0.41, rely = 0.70)
 		self.TeacherFrame.pack(side=TOP, fill="both", expand=True)
 
 
@@ -88,7 +91,6 @@ class TeacherRoot:
 		self.ShowDeletedStudentsFrame.destroy()
 		self.canvas.destroy()
 		self.__init__(self.master)
-
 		Label(self.AddStudentFrame, text = "Enter student details", font = Font(size = 12)).grid(row = 1, column = 0, columnspan = 2)
 		subs = ("Roll_No", "PRN_Number", "Name", "AM4", "AM4_Tut", "AOA", "AOA_Lab", "CG", "CG_Lab", "OS", "OS_Lab", "COA", "COA_Lab", "OSTL_Th", "OSTL")
 		Label(self.AddStudentFrame, text = "* mark means it is compulsory", fg = "BLUE").grid(row=0, column=2)
@@ -226,10 +228,26 @@ class TeacherRoot:
 		a = messagebox.askyesno("Confirm", ("Attendance for ",x))
 		if(a==True):
 			self.database.commit()
-			self.destroy2()
+			try:
+				self.destroy2()
+				self.scrollbary.destroy()
+				self.teachercall()
+			except:
+				self.destroy2()
+				self.scrollbarx.destroy()
+				self.scrollbary.destroy()
+				self.teachercall()
 		elif(a==False):
 			messagebox.showinfo("Not saved", "Attendance not updated")
-			self.destroy2()
+			try:
+				self.destroy2()
+				self.scrollbary.destroy()
+				self.teachercall()
+			except:
+				self.destroy2()
+				self.scrollbarx.destroy()
+				self.scrollbary.destroy()
+				self.teachercall()
 			
 
 	def checkattendance(self):
@@ -327,6 +345,8 @@ class TeacherRoot:
 			self.mycursor.execute(sql, key)
 			self.database.commit()
 			messagebox.showinfo("Congo", "Deleted successfully : "+self.data)
+			self.destroy2()
+			self.teachercall()
 
 
 	def showdeletedstudents(self):
@@ -344,50 +364,61 @@ class TeacherRoot:
 		
 		list = []
 		for i in range(len(self.alldata2)):
-			print(self.alldata2[i][len(self.subs)])
 			if self.alldata2[i][len(self.subs)]==1:
 				list.append(self.alldata2[i])
-		print(list)
-
-		size = range(1, 50, 2)
-		Separator(self.ShowDeletedStudentsFrame, orient=HORIZONTAL).grid(row=0, column=0, columnspan=50, sticky='ew')
-		for i in range(len(self.subs)):
-			if self.subs[i] == "Name":
-				Label(self.ShowDeletedStudentsFrame, text=self.subs[i], width=25).grid(row=1, column=size[i], stick=W)
-			elif self.subs[i] == "PRN_Number":
-				Label(self.ShowDeletedStudentsFrame, text=self.subs[i], width=10).grid(row=1, column=size[i], stick=W)
-			else:
-				Label(self.ShowDeletedStudentsFrame, text=self.subs[i], width=7).grid(row=1, column=size[i], stick=W)
-			Separator(self.ShowDeletedStudentsFrame, orient=VERTICAL).grid(row=1, column=size[i] - 1, sticky='ns')
-		self.total = Label(self.ShowDeletedStudentsFrame, text="Total", width=7, font=Font(size=12), fg="GREEN").grid(row=1, column= size[i]+2, stick=W)
-		Separator(self.ShowDeletedStudentsFrame, orient=VERTICAL).grid(row=1, column=size[i] + 1, sticky='ns')
-		Separator(self.ShowDeletedStudentsFrame, orient=VERTICAL).grid(row=1, column=size[i] + 3, sticky='ns')
-		Separator(self.ShowDeletedStudentsFrame, orient=HORIZONTAL).grid(row=2, column=0, columnspan=50, sticky='ew')
-
-		for i in range(len(list)):
-			for j in range(len(self.subs)):
-				Label(self.ShowDeletedStudentsFrame, text=list[i][j]).grid(row=i+5, column=size[j], stick=E)
-				Separator(self.ShowDeletedStudentsFrame, orient=VERTICAL).grid(row=i + 5, column=size[j] - 1, sticky='ns')
-			Separator(self.ShowDeletedStudentsFrame, orient=VERTICAL).grid(row=i + 5, column=size[j] + 1, sticky='ns')
-			self.total = list[i][3] + list[i][4] + list[i][5] + list[i][6] + list[i][7] + list[i][8] + list[i][9] + list[i][10] + list[i][11] + list[i][12] + list[i][13] + list[i][14]
-			Label(self.ShowDeletedStudentsFrame, text=self.total, font=Font(size=12), fg="GREEN").grid(row=i+5, column=size[j]+2, stick=E)
-			Separator(self.ShowDeletedStudentsFrame, orient=VERTICAL).grid(row=i + 5, column=size[j] + 3, sticky='ns')
-		Separator(self.ShowDeletedStudentsFrame, orient=HORIZONTAL).grid(row=i + 6, column=0, columnspan=50, sticky='ew')
-		self.ShowDeletedStudentsFrame.pack(side=TOP, fill="both", expand=True)
-		
+		if len(list)==0:
+			messagebox.showerror("Error","Recycle bin is empty")
+			self.destroy2()
+			self.teachercall()
+		else:
+			size = range(1, 50, 2)
+			Separator(self.ShowDeletedStudentsFrame, orient=HORIZONTAL).grid(row=0, column=0, columnspan=50, sticky='ew')
+			for i in range(len(self.subs)):
+				if self.subs[i] == "Name":
+					Label(self.ShowDeletedStudentsFrame, text=self.subs[i], width=25).grid(row=1, column=size[i], stick=W)
+				elif self.subs[i] == "PRN_Number":
+					Label(self.ShowDeletedStudentsFrame, text=self.subs[i], width=10).grid(row=1, column=size[i], stick=W)
+				else:
+					Label(self.ShowDeletedStudentsFrame, text=self.subs[i], width=7).grid(row=1, column=size[i], stick=W)
+				Separator(self.ShowDeletedStudentsFrame, orient=VERTICAL).grid(row=1, column=size[i] - 1, sticky='ns')
+			self.total = Label(self.ShowDeletedStudentsFrame, text="Total", width=7, font=Font(size=12), fg="GREEN").grid(row=1, column= size[i]+2, stick=W)
+			Separator(self.ShowDeletedStudentsFrame, orient=VERTICAL).grid(row=1, column=size[i] + 1, sticky='ns')
+			Separator(self.ShowDeletedStudentsFrame, orient=VERTICAL).grid(row=1, column=size[i] + 3, sticky='ns')
+			Separator(self.ShowDeletedStudentsFrame, orient=HORIZONTAL).grid(row=2, column=0, columnspan=50, sticky='ew')
+	
+			for i in range(len(list)):
+				for j in range(len(self.subs)):
+					Label(self.ShowDeletedStudentsFrame, text=list[i][j]).grid(row=i+5, column=size[j], stick=E)
+					Separator(self.ShowDeletedStudentsFrame, orient=VERTICAL).grid(row=i + 5, column=size[j] - 1, sticky='ns')
+				Separator(self.ShowDeletedStudentsFrame, orient=VERTICAL).grid(row=i + 5, column=size[j] + 1, sticky='ns')
+				self.total = list[i][3] + list[i][4] + list[i][5] + list[i][6] + list[i][7] + list[i][8] + list[i][9] + list[i][10] + list[i][11] + list[i][12] + list[i][13] + list[i][14]
+				Label(self.ShowDeletedStudentsFrame, text=self.total, font=Font(size=12), fg="GREEN").grid(row=i+5, column=size[j]+2, stick=E)
+				Separator(self.ShowDeletedStudentsFrame, orient=VERTICAL).grid(row=i + 5, column=size[j] + 3, sticky='ns')
+			Separator(self.ShowDeletedStudentsFrame, orient=HORIZONTAL).grid(row=i + 6, column=0, columnspan=50, sticky='ew')
+			self.ShowDeletedStudentsFrame.pack(side=TOP, fill="both", expand=True)
+			
 	
 	def export_to_csv(self):
 		self.mycursor.execute("SELECT * FROM attendance")
 		result = self.mycursor.fetchall()
+		total = simpledialog.askinteger("Export", "Enter total number of lectures")
 		location = filedialog.asksaveasfilename(defaultextension = ".csv", filetypes = (("CSV Files", ".csv"), ("All files", "*.*")))
 		try:
 			c = csv.writer(open(location, 'w', newline=""), lineterminator="\n")
-			columns = ['Roll_No', 'PRN_Number', 'Name', 'AM4', 'AM4_Tutorial', 'AOA', 'AOA_Practical', 'CG', 'CG_Practical', 'OS', 'OS_Practical', 'COA', 'COA_Practical', 'OSTL', 'OSTL_Practical']
+			columns = ['Roll_No', 'PRN_Number', 'Name', 'AM4', 'AM4_Tutorial', 'AOA', 'AOA_Practical', 'CG', 'CG_Practical', 'OS', 'OS_Practical', 'COA', 'COA_Practical', 'OSTL', 'OSTL_Practical', 'Percentage']
 			c.writerow(columns)
+			count=0
 			for x in result:
+				totatt = 0
+				for i in range(3, 15):
+					totatt = totatt + result[count][i]
 				if x[len(x)-1]==0:
 					write = x[0:(len(x)-1)]
-					c.writerow(write)
+					write1 = list(write)
+					write2 = (totatt / total * 100)
+					write1.append(write2)
+					c.writerow(write1)
+				count+=1
 		except FileNotFoundError:
 			messagebox.showerror("Bad directory", "You may not have choosen any directory or wrong directory", icon="warning")
 
