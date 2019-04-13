@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="56fcf5e2-630d-4079-819a-0ef829f610cf" name="Default Changelist" comment="16 Mar 2019 02:59 pm">
-      <change beforePath="$PROJECT_DIR$/.idea/Mini_Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Mini_Project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Attendance Manager/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Attendance Manager/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UsingClasses/adi.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UsingClasses/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/UsingClasses/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UsingClasses/studentfile.py" beforeDir="false" afterPath="$PROJECT_DIR$/UsingClasses/studentfile.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UsingClasses/teacherfile.py" beforeDir="false" afterPath="$PROJECT_DIR$/UsingClasses/teacherfile.py" afterDir="false" />
-    </list>
+    <list default="true" id="56fcf5e2-630d-4079-819a-0ef829f610cf" name="Default Changelist" comment="16 Mar 2019 02:59 pm" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +16,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/UsingClasses/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="21" lean-forward="true" selection-start-column="21" selection-end-column="21" />
+            <state relative-caret-position="170">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -552,8 +547,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/UsingClasses/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="21" lean-forward="true" selection-start-column="21" selection-end-column="21" />
+        <state relative-caret-position="170">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
