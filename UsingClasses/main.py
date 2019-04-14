@@ -99,10 +99,11 @@ class StartRoot:
         self.a = StringVar()
         self.b = StringVar()
         Label(self.z, text="UserID", bg='gray53', fg='white').grid(row=0, column=0, pady=5)
-        Entry(self.z, textvariable=self.a).grid(row=0, column=1)
+        r = Entry(self.z, textvariable=self.a).grid(row=0, column=1)
         Label(self.z, text="Enter Password", bg='gray53', fg='white').grid(row=1, column=0, pady=5)
         Entry(self.z, textvariable=self.b).grid(row=1, column=1)
         Button(self.z, text="Login", command=self.verify, font=Font(size=12)).grid(row=2, column=1, pady=10)
+
 
     def verify(self):
         a = self.a.get()

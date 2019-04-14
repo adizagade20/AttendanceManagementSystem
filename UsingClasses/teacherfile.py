@@ -133,7 +133,7 @@ class TeacherRoot:
             except:
                 self.data.append(0)
         try:
-            if self.data[0] == 0 or self.data[1] == 0 or self.data[2] == '':
+            if self.data[0] == 0 or self.data[1] == 0 or self.data[2] == 'First Name Last Name':
                 messagebox.showwarning("Insufficient data", "Data entered by you is not sufficient", icon="warning")
             else:
                 sql = "INSERT INTO attendance(Roll_No, PRN_Number, Name, Am4, AM4_Tutorial, AOA, AOA_Practical, CG, CG_Practical, OS, OS_Practical, COA, COA_Practical, OSTL, OSTL_Practical, IsDeleted) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 0)"
