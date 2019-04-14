@@ -9,13 +9,16 @@ from PIL import Image
 from PIL import ImageTk
 
 root = Tk()
+
 root.title("Attendance Management System")
 root.configure(background='gray53')
+
 
 try:
     database = mysql.connector.connect(host="localhost", user="root", passwd="root", database="adi")
     mycursor = database.cursor()
     root.geometry("1000x600+180+30")
+    root.iconbitmap("cap.ico")
 except mysql.connector.errors.InterfaceError:
     root.geometry("100x100+6000+4000")
     Label(root, text="Error!", font=Font(size=18)).pack()
@@ -45,8 +48,8 @@ class StartRoot:
         mycursor = database.cursor()
         self.class1 = StudentRoot(root)
         self.class2 = TeacherRoot(root)
+        self.master.bind('<Escape>', self.escape)
         self.first_page()
-        root.bind('<Escape>', self.escape)
 
         try:
             database = mysql.connector.connect(host="localhost", user="root", passwd="root", database="adi")
@@ -109,12 +112,13 @@ class StartRoot:
         sql = "SELECT UserID, Password from teachercredential WHERE UserID=%s and Password=%s"
         self.cursor.execute(sql, (a, b,))
         x = self.cursor.fetchall()
-        print(x)
         if len(x) is 1:
             self.z.destroy()
             self.class2.teachercall()
         else:
             messagebox.showerror("Wrong Credential", "UserID or Password is wrong")
+            self.__init__(self.master)
+            self.first_page()
 
     def escape(self, event):
         student.MainFrame.destroy()
@@ -196,7 +200,7 @@ class addteacher:
         self.teacherdatabase.commit()
         messagebox.showinfo("Success", "Teacher " + nameget + " added successfully!")
         self.addteachertop.destroy()
-        self.__init__()
+        self.__init__(self.master)
 
 
 def menubar():

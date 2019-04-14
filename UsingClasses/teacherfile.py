@@ -45,12 +45,25 @@ class TeacherRoot:
                      "CG", "CG_Lab", "OS", "OS_Lab", "COA", "COA_Lab", "OSTL_Th", "OSTL")
         self.database = mysql.connector.connect(host="localhost", user="root", passwd="root", database="adi")
         self.mycursor = self.database.cursor()
+
         self.mycursor.execute("SELECT * FROM attendance")
         self.alldata2 = self.mycursor.fetchall()
         self.alldata = []
         for i in range(len(self.alldata2)):
             if self.alldata2[i][15] != 1:
                 self.alldata.append((self.alldata2[i]))
+
+        self.mycursor.execute("DESCRIBE attendance")
+        self.AllColumnNames = self.mycursor.fetchall()
+        for i in range(len(self.AllColumnNames) - 1):
+            if i in range(3):
+                continue
+            else:
+                self.columnnames.append(self.AllColumnNames[i][0])
+                
+        self.mycursor.execute("SELECT Roll_No, Name, IsDeleted FROM attendance")
+        self.rollandname2 = self.mycursor.fetchall()
+
 
     def teachercall(self):
         self.destroy2()
@@ -140,28 +153,19 @@ class TeacherRoot:
     def markattendance(self):
         self.destroy2()
         self.__init__(self.master)
-        self.mycursor.execute("DESCRIBE attendance")
-        self.AllColumnNames = self.mycursor.fetchall()
-        for i in range(len(self.AllColumnNames) - 1):
-            if i in range(3):
-                continue
-            else:
-                self.columnnames.append(self.AllColumnNames[i][0])
-        Label(self.MarkAttendanceFrame, text="Choose Subject to Mark Attendance :", font=Font(size=12), bg='gray53',
-              fg='white').grid(row=0, column=0, pady=20)
+        Label(self.MarkAttendanceFrame, text="Choose Subject to Mark Attendance :", font=Font(size=12), bg='gray53', fg='white').grid(row=0, column=0, pady=20)
         class_dropdown = Combobox(self.MarkAttendanceFrame, values=self.columnnames, textvariable=self.columnvariable)
         class_dropdown.current(0)
         class_dropdown.state(['readonly'])
         class_dropdown.bind("<FocusIn>", self.defocus)
         class_dropdown.grid(row=0, column=1, padx=20)
-        Button(self.MarkAttendanceFrame, text="Sumbit", padx=10, pady=2, relief=RAISED, font=Font(size=12),
-               activebackground="BLUE", activeforeground="WHITE", command=self.markattendance2).grid(row=1, column=1)
+        Button(self.MarkAttendanceFrame, text="Sumbit", padx=10, pady=2, relief=RAISED, font=Font(size=12), activebackground="BLUE", activeforeground="WHITE", command=self.markattendance2).grid(row=0, column=2)
         self.MarkAttendanceFrame.pack()
 
     def markattendance2(self):
         self.canvas.pack(side=LEFT, fill="both", expand=True, padx=10, pady=10)
         self.MarkAttendanceFrame2 = Frame(self.canvas, background='gray53')
-
+    
         self.scrollbary = Scrollbar(self.master, orient=VERTICAL, command=self.canvas.yview)
         self.scrollbary.pack(side=RIGHT, fill=Y)
         self.canvas.configure(yscrollcommand=self.scrollbary.set)
@@ -171,22 +175,13 @@ class TeacherRoot:
         for i in range(len(self.alldata)):
             if self.alldata[i][15] != 1:
                 var = IntVar()
-                Label(self.MarkAttendanceFrame2, text=self.alldata[i][0], width=6, bg='gray53', fg='white').grid(row=i,
-                                                                                                                 column=0,
-                                                                                                                 pady=5)
-                Label(self.MarkAttendanceFrame2, text=self.alldata[i][1], width=12, bg='gray53', fg='white').grid(row=i,
-                                                                                                                  column=1)
-                Label(self.MarkAttendanceFrame2, text=self.alldata[i][2], width=30, bg='gray53', fg='white').grid(row=i,
-                                                                                                                  column=2,
-                                                                                                                  stick=W)
-                Checkbutton(self.MarkAttendanceFrame2, text="Tick if Present", variable=var, offvalue=0, bg='gray53',
-                            fg='white', onvalue=1).grid(row=i, column=7)
+                Label(self.MarkAttendanceFrame2, text=self.alldata[i][0], width=6, bg='gray53', fg='white').grid(row=i, column=0, pady=5)
+                Label(self.MarkAttendanceFrame2, text=self.alldata[i][1], width=12, bg='gray53', fg='white').grid(row=i, column=1)
+                Label(self.MarkAttendanceFrame2, text=self.alldata[i][2], width=30, bg='gray53', fg='white').grid(row=i,column=2, stick=W)
+                Checkbutton(self.MarkAttendanceFrame2, text="Tick if Present", selectcolor='coral1', variable=var, bg='gray53', fg='white', onvalue=1, offvalue=0).grid(row=i, column=7)
                 self.check.append(var)
         if i != 0:
-            Button(self.MarkAttendanceFrame2, text="Save Attendance", padx=10, pady=2, font=Font(size=12),
-                   activebackground="BLUE", activeforeground="WHITE", command=self.getattendancemarked).grid(row=i + 1,
-                                                                                                             column=2,
-                                                                                                             pady=20)
+            Button(self.MarkAttendanceFrame2, text="Save Attendance", padx=10, pady=2, font=Font(size=12), activebackground="BLUE", activeforeground="WHITE", command=self.getattendancemarked).grid(row=i + 1, column=2, pady=20)
         else:
             messagebox.showerror("Error", "No student found")
             self.destroy2()
@@ -211,7 +206,7 @@ class TeacherRoot:
                 subject = self.columnvariable.get()
                 roll = self.alldata[i][0]
                 x.append(self.alldata[i][0])
-                new = self.alldata[i][count] + 1
+                new = self.alldata[i][count]+1
                 data = []
                 j = 0
                 for i in self.alldata[i]:
@@ -224,9 +219,7 @@ class TeacherRoot:
                 key = (roll,)
                 self.mycursor.execute(sql, key)
                 sql2 = "INSERT INTO attendance(Roll_No, PRN_Number, Name, Am4, AM4_Tutorial, AOA, AOA_Practical, CG, CG_Practical, OS, OS_Practical, COA, COA_Practical, OSTL, OSTL_Practical, IsDeleted) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 0)"
-                key2 = (
-                    data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9], data[10],
-                    data[11], data[12], data[13], data[14],)
+                key2 = (data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9], data[10], data[11], data[12], data[13], data[14],)
                 self.mycursor.execute(sql2, key2, )
         a = messagebox.askyesno("Confirm", ("Attendance for ", x))
         if (a == True):
@@ -276,23 +269,13 @@ class TeacherRoot:
             Separator(self.CheckAttendanceFrame, orient=HORIZONTAL).grid(row=0, column=0, columnspan=50, sticky='ew')
             for i in range(len(self.subs)):
                 if self.subs[i] == "Name":
-                    Label(self.CheckAttendanceFrame, text=self.subs[i], width=25, bg='gray53', fg='white').grid(row=1,
-                                                                                                                column=
-                                                                                                                size[i],
-                                                                                                                stick=W)
+                    Label(self.CheckAttendanceFrame, text=self.subs[i], width=15, bg='gray53', fg='white').grid(row=1, column=size[i], stick=W)
                 elif self.subs[i] == "PRN_Number":
-                    Label(self.CheckAttendanceFrame, text=self.subs[i], width=10, bg='gray53', fg='white').grid(row=1,
-                                                                                                                column=
-                                                                                                                size[i],
-                                                                                                                stick=W)
+                    Label(self.CheckAttendanceFrame, text=self.subs[i], width=10, bg='gray53', fg='white').grid(row=1, column=size[i], stick=W)
                 else:
-                    Label(self.CheckAttendanceFrame, text=self.subs[i], width=7, bg='gray53', fg='white').grid(row=1,
-                                                                                                               column=
-                                                                                                               size[i],
-                                                                                                               stick=W)
+                    Label(self.CheckAttendanceFrame, text=self.subs[i], width=7, bg='gray53', fg='white').grid(row=1, column=size[i], stick=W)
                 Separator(self.CheckAttendanceFrame, orient=VERTICAL).grid(row=1, column=size[i] - 1, sticky='ns')
-            self.total = Label(self.CheckAttendanceFrame, text="Total", width=7, font=Font(size=12), bg='gray53',
-                               fg='white').grid(row=1, column=size[i] + 2, stick=W)
+            self.total = Label(self.CheckAttendanceFrame, text="Total", width=7, font=Font(size=12), bg='gray53', fg='white').grid(row=1, column=size[i] + 2, stick=W)
             Separator(self.CheckAttendanceFrame, orient=VERTICAL).grid(row=1, column=size[i] + 1, sticky='ns')
             Separator(self.CheckAttendanceFrame, orient=VERTICAL).grid(row=1, column=size[i] + 3, sticky='ns')
             Separator(self.CheckAttendanceFrame, orient=HORIZONTAL).grid(row=2, column=0, columnspan=50, sticky='ew')
@@ -301,21 +284,13 @@ class TeacherRoot:
                 if self.alldata[i][len(self.subs)] == 1:
                     continue
                 for j in range(len(self.subs)):
-                    Label(self.CheckAttendanceFrame, text=self.alldata[i][j], bg='gray53', fg='white').grid(row=i + 5,
-                                                                                                            column=size[
-                                                                                                                j],
-                                                                                                            stick=E)
-                    Separator(self.CheckAttendanceFrame, orient=VERTICAL).grid(row=i + 5, column=size[j] - 1,
-                                                                               sticky='ns')
-                Separator(self.CheckAttendanceFrame, orient=VERTICAL).grid(row=i + 5, column=size[j] + 1, sticky='ns')
-                self.total = self.alldata[i][3] + self.alldata[i][4] + self.alldata[i][5] + self.alldata[i][6] + \
-                             self.alldata[i][7] + self.alldata[i][8] + self.alldata[i][9] + self.alldata[i][10] + \
-                             self.alldata[i][11] + self.alldata[i][12] + self.alldata[i][13] + self.alldata[i][14]
-                Label(self.CheckAttendanceFrame, text=self.total, font=Font(size=12), bg='gray53', fg='white').grid(
-                    row=i + 5, column=size[j] + 2, stick=E)
+                    Label(self.CheckAttendanceFrame, text=self.alldata[i][j], bg='gray53', fg='white').grid(row=i + 5, column=size[j], stick=E)
+                    Separator(self.CheckAttendanceFrame, orient=VERTICAL).grid(row=i+5, column=size[j]-1, sticky='ns')
+                Separator(self.CheckAttendanceFrame, orient=VERTICAL).grid(row=i+5, column=size[j]+1, sticky='ns')
+                self.total = self.alldata[i][3] + self.alldata[i][4] + self.alldata[i][5] + self.alldata[i][6] + self.alldata[i][7] + self.alldata[i][8] + self.alldata[i][9] + self.alldata[i][10] + self.alldata[i][11] + self.alldata[i][12] + self.alldata[i][13] + self.alldata[i][14]
+                Label(self.CheckAttendanceFrame, text=self.total, font=Font(size=12), bg='gray53', fg='white').grid(row=i + 5, column=size[j] + 2, stick=E)
                 Separator(self.CheckAttendanceFrame, orient=VERTICAL).grid(row=i + 5, column=size[j] + 3, sticky='ns')
-            Separator(self.CheckAttendanceFrame, orient=HORIZONTAL).grid(row=i + 6, column=0, columnspan=50,
-                                                                         sticky='ew')
+            Separator(self.CheckAttendanceFrame, orient=HORIZONTAL).grid(row=i + 6, column=0, columnspan=50, sticky='ew')
 
     def on_configure(self, event):
         self.canvas.configure(scrollregion=self.canvas.bbox('all'))
@@ -329,8 +304,7 @@ class TeacherRoot:
         self.DeleteStudentFrame = Toplevel(background='gray53')
         self.DeleteStudentFrame.geometry("200x200+600+200")
         self.DeleteStudentFrame.resizable(0, 0)
-        self.mycursor.execute("SELECT Roll_No, Name, IsDeleted FROM attendance")
-        self.rollandname2 = self.mycursor.fetchall()
+
         if len(self.rollandname2) == 0:
             messagebox.showerror("Error", "No student available")
             self.destroy2()
@@ -343,15 +317,12 @@ class TeacherRoot:
                 continue
             else:
                 self.rollandname.append(i[0:2])
-
-        self.rollandname_dropdown = Combobox(self.DeleteStudentFrame, values=self.rollandname,
-                                             textvariable=self.rollname, width=20)
+        self.rollandname_dropdown = Combobox(self.DeleteStudentFrame, values=self.rollandname, textvariable=self.rollname, width=20)
         self.rollandname_dropdown.current(0)
         self.rollandname_dropdown.state(['readonly'])
         self.rollandname_dropdown.bind("<FocusIn>", self.defocus)
         self.rollandname_dropdown.place(x=30, y=50)
-        Button(self.DeleteStudentFrame, text="Delete", bg='gray53', fg='white', command=self.finaldelete, padx=15,
-               font=Font(size=12), pady=5).place(x=55, y=100)
+        Button(self.DeleteStudentFrame, text="Delete", command=self.finaldelete, padx=15, font=Font(size=12), pady=5).place(x=55, y=100)
 
     def finaldelete(self):
         self.data = self.rollname.get()
@@ -364,11 +335,17 @@ class TeacherRoot:
                 self.database.commit()
                 messagebox.showinfo("Congo", "Deleted successfully : " + self.data)
                 self.destroy2()
+                self.__init__(self.master)
+                self.teachercall()
+            else:
+                self.destroy2()
+                self.__init__(self.master)
                 self.teachercall()
         except:
             self.destroy2()
             self.__init__(self.master)
             self.teachercall()
+
 
     def showdeletedstudents(self):
         self.destroy2()
@@ -384,43 +361,29 @@ class TeacherRoot:
             self.teachercall()
         else:
             size = range(1, 50, 2)
-            Separator(self.ShowDeletedStudentsFrame, orient=HORIZONTAL).grid(row=0, column=0, columnspan=50,
-                                                                             sticky='ew')
+            Separator(self.ShowDeletedStudentsFrame, orient=HORIZONTAL).grid(row=0, column=0, columnspan=50, sticky='ew')
             for i in range(len(self.subs)):
                 if self.subs[i] == "Name":
-                    Label(self.ShowDeletedStudentsFrame, text=self.subs[i], width=20, bg='gray53', fg='white').grid(
-                        row=1, column=size[i], stick=W)
+                    Label(self.ShowDeletedStudentsFrame, text=self.subs[i], width=20, bg='gray53', fg='white').grid(row=1, column=size[i], stick=W)
                 elif self.subs[i] == "PRN_Number":
-                    Label(self.ShowDeletedStudentsFrame, text=self.subs[i], width=10, bg='gray53', fg='white').grid(
-                        row=1, column=size[i], stick=W)
+                    Label(self.ShowDeletedStudentsFrame, text=self.subs[i], width=10, bg='gray53', fg='white').grid(row=1, column=size[i], stick=W)
                 else:
-                    Label(self.ShowDeletedStudentsFrame, text=self.subs[i], width=6, bg='gray53', fg='white').grid(
-                        row=1, column=size[i], stick=W)
+                    Label(self.ShowDeletedStudentsFrame, text=self.subs[i], width=6, bg='gray53', fg='white').grid(row=1, column=size[i], stick=W)
                 Separator(self.ShowDeletedStudentsFrame, orient=VERTICAL).grid(row=1, column=size[i] - 1, sticky='ns')
-            self.total = Label(self.ShowDeletedStudentsFrame, text="Total", width=7, font=Font(size=12), bg='gray53',
-                               fg='white').grid(row=1, column=size[i] + 2, stick=W)
+            self.total = Label(self.ShowDeletedStudentsFrame, text="Total", width=7, font=Font(size=12), bg='gray53', fg='white').grid(row=1, column=size[i] + 2, stick=W)
             Separator(self.ShowDeletedStudentsFrame, orient=VERTICAL).grid(row=1, column=size[i] + 1, sticky='ns')
             Separator(self.ShowDeletedStudentsFrame, orient=VERTICAL).grid(row=1, column=size[i] + 3, sticky='ns')
-            Separator(self.ShowDeletedStudentsFrame, orient=HORIZONTAL).grid(row=2, column=0, columnspan=50,
-                                                                             sticky='ew')
+            Separator(self.ShowDeletedStudentsFrame, orient=HORIZONTAL).grid(row=2, column=0, columnspan=50, sticky='ew')
 
             for i in range(len(list)):
                 for j in range(len(self.subs)):
-                    Label(self.ShowDeletedStudentsFrame, text=list[i][j], bg='gray53', fg='white').grid(row=i + 5,
-                                                                                                        column=size[j],
-                                                                                                        stick=E)
-                    Separator(self.ShowDeletedStudentsFrame, orient=VERTICAL).grid(row=i + 5, column=size[j] - 1,
-                                                                                   sticky='ns')
-                Separator(self.ShowDeletedStudentsFrame, orient=VERTICAL).grid(row=i + 5, column=size[j] + 1,
-                                                                               sticky='ns')
-                self.total = list[i][3] + list[i][4] + list[i][5] + list[i][6] + list[i][7] + list[i][8] + list[i][9] + \
-                             list[i][10] + list[i][11] + list[i][12] + list[i][13] + list[i][14]
-                Label(self.ShowDeletedStudentsFrame, text=self.total, font=Font(size=12), bg='gray53', fg='white').grid(
-                    row=i + 5, column=size[j] + 2, stick=E)
-                Separator(self.ShowDeletedStudentsFrame, orient=VERTICAL).grid(row=i + 5, column=size[j] + 3,
-                                                                               sticky='ns')
-            Separator(self.ShowDeletedStudentsFrame, orient=HORIZONTAL).grid(row=i + 6, column=0, columnspan=50,
-                                                                             sticky='ew')
+                    Label(self.ShowDeletedStudentsFrame, text=list[i][j], bg='gray53', fg='white').grid(row=i+5, column=size[j], stick=E)
+                    Separator(self.ShowDeletedStudentsFrame, orient=VERTICAL).grid(row=i+5, column=size[j]-1, sticky='ns')
+                Separator(self.ShowDeletedStudentsFrame, orient=VERTICAL).grid(row=i+5, column=size[j]+1, sticky='ns')
+                self.total = list[i][3] + list[i][4] + list[i][5] + list[i][6] + list[i][7] + list[i][8] + list[i][9] + list[i][10] + list[i][11] + list[i][12] + list[i][13] + list[i][14]
+                Label(self.ShowDeletedStudentsFrame, text=self.total, font=Font(size=12), bg='gray53', fg='white').grid(row=i + 5, column=size[j] + 2, stick=E)
+                Separator(self.ShowDeletedStudentsFrame, orient=VERTICAL).grid(row=i+5, column=size[j]+3, sticky='ns')
+            Separator(self.ShowDeletedStudentsFrame, orient=HORIZONTAL).grid(row=i+6, column=0, columnspan=50, sticky='ew')
             self.ShowDeletedStudentsFrame.pack(side=TOP, fill="both", expand=True)
 
     def export_to_csv(self):
@@ -448,8 +411,7 @@ class TeacherRoot:
                     c.writerow(write1)
                 count += 1
         except FileNotFoundError:
-            messagebox.showerror("Bad directory", "You may not have choosen any directory or wrong directory",
-                                 icon="warning")
+            messagebox.showerror("Bad directory", "Please choose valid directory",icon="warning")
 
     def destroy2(self):
         self.TeacherFrame.destroy()
@@ -465,7 +427,8 @@ class TeacherRoot:
             pass
         self.ShowDeletedStudentsFrame.destroy()
         self.canvas.destroy()
-
+        
+        
 
 if __name__ == '__main__':
     root = Tk()
