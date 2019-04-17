@@ -15,7 +15,7 @@ root.configure(background='gray53')
 
 
 try:
-    database = mysql.connector.connect(host="localhost", user="root", passwd="root", database="adi")
+    database = mysql.connector.connect(host="localhost", user="root", passwd="root")
     mycursor = database.cursor()
     root.geometry("1000x600+180+30")
     root.iconbitmap("cap.ico")
@@ -25,9 +25,17 @@ except mysql.connector.errors.InterfaceError:
     messagebox.showerror("Error!", "Connection to the Server could not be acquired", icon="error")
     exit()
 
+
+
+
+database = mysql.connector.connect(host="localhost", user="root", passwd="root")
+mycursor = database.cursor()
+mycursor.execute("CREATE DATABASE IF NOT EXISTS adi")
+database.commit()
+
 database = mysql.connector.connect(host="localhost", user="root", passwd="root", database="adi")
 mycursor = database.cursor()
-mycursor.execute('CREATE TABLE IF NOT EXISTS attendance(Roll_No TINYINT(4),Name VARCHAR(255), PRN_Number INT(11),'
+mycursor.execute('CREATE TABLE IF NOT EXISTS attendance(Roll_No TINYINT(4), PRN_Number INT(11), Name VARCHAR(255),'
                  'AM4 TINYINT(4), AM4_Tutorial TINYINT(4),'
                  'AOA TINYINT(4), AOA_Practical TINYINT(4),'
                  'CG TINYINT(4), CG_Practical TINYINT(4),'
@@ -38,6 +46,13 @@ mycursor.execute('CREATE TABLE IF NOT EXISTS attendance(Roll_No TINYINT(4),Name 
                  'PRIMARY KEY (Roll_No, PRN_Number) )'
                  )
 database.commit()
+
+teacherdatabase = mysql.connector.connect(host="localhost", user="root", passwd="root", database="adi")
+cursor = database.cursor()
+cursor.execute(
+    "CREATE TABLE IF NOT EXISTS `teachercredential`(`UserID` INT(11) NOT NULL, `Name` VARCHAR(255) NULL, "
+    "`Password` INT(11) NULL, PRIMARY KEY (`UserID`), UNIQUE INDEX `UserID_UNIQUE` (`UserID` ASC) VISIBLE)")
+teacherdatabase.commit()
 
 
 class StartRoot:
@@ -101,7 +116,7 @@ class StartRoot:
         Label(self.z, text="UserID", bg='gray53', fg='white').grid(row=0, column=0, pady=5)
         r = Entry(self.z, textvariable=self.a).grid(row=0, column=1)
         Label(self.z, text="Enter Password", bg='gray53', fg='white').grid(row=1, column=0, pady=5)
-        Entry(self.z, textvariable=self.b).grid(row=1, column=1)
+        Entry(self.z, textvariable=self.b, show='*').grid(row=1, column=1)
         Button(self.z, text="Login", command=self.verify, font=Font(size=12)).grid(row=2, column=1, pady=10)
 
 
@@ -159,7 +174,7 @@ class addteacher:
         Label(self.z, text="User ID :", bg='gray53', fg='white').grid(row=0, column=0, pady=5)
         Entry(self.z, textvariable=self.c).grid(row=0, column=1)
         Label(self.z, text="Password :", bg='gray53', fg='white').grid(row=1, column=0, pady=5)
-        Entry(self.z, textvariable=self.e).grid(row=1, column=1)
+        Entry(self.z, textvariable=self.e, show='*').grid(row=1, column=1)
         Button(self.z, text="login", bd=2, command=self.verify, activebackground="BLUE", activeforeground="WHITE", font=Font(size=12)).grid(row=2, column=1, columnspan=2, pady=10)
 
     def verify(self):
@@ -185,7 +200,7 @@ class addteacher:
         Label(self.addteachertop, text="Enter Name : ", bg='gray53', fg='white').grid(row=5, column=5, pady=2)
         Entry(self.addteachertop, textvariable=self.b).grid(row=5, column=6)
         Label(self.addteachertop, text="Enter Password : ", bg='gray53', fg='white').grid(row=6, column=5, pady=2)
-        Entry(self.addteachertop, textvariable=self.d).grid(row=6, column=6)
+        Entry(self.addteachertop, textvariable=self.d, show='*').grid(row=6, column=6)
         Button(self.addteachertop, text="Add Teacher", bd=2, command=self.addteacherfun2, activebackground="BLUE", font=Font(size=12), activeforeground="WHITE").grid(row=7, column=5, columnspan=2, pady=5)
 
     def addteacherfun2(self):
