@@ -1,17 +1,10 @@
-# Mini_Project
+# Attendance Management System
 ----------------------------------WELCOME-----------------------------------------
 
-
-Subject: OSTL
-Topic: Attendance Management System
-
-
-------------------------Attendance Management System-----------------------
-
+------------------------Attendance Management System------------------------------
 
 • Steps to run (install) application
    As of my knowledge, all bugs are solved in current system (No new features).
-
 
 1.	Configure your mysql server with username and password both being 'root'.
 2	Next functions will be performed automatically (creating database and tables).
@@ -23,6 +16,5 @@ Topic: Attendance Management System
 8.	If you delete any entry or student, you can't restore it by using the application.
 9.	You have to open database in suitable application, and change column (IsDeleted) from 1 to 0.
 10.	While exporting you need to provide number of lectures conducted till date so the application will be able to count the percentage.
-
 
 Thanks
